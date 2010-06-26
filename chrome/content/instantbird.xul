@@ -39,7 +39,7 @@
 
 <overlay id="vertical-tabs"
 		 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-	<!--<script type="application/javascript" src="chrome://vertical-tabs/content/cssParser.js" />
+	<!--<script type="application/javascript" src="resource://vertical-tabs/cssParser.js" />
 	<script type="application/javascript" src="chrome://vertical-tabs/content/instantbird.js" />//-->
 	
 </overlay>
