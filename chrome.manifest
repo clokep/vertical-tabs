@@ -1,0 +1,6 @@
+content		vertical-tabs									chrome/content/
+#overlay		chrome://instantbird/content/instantbird.xul	chrome://vertical-tabs/content/instantbird.xul
+#style		chrome://instantbird/content/instantbird.xul	chrome://vertical-tabs/content/instantbird.css
+#style		chrome://instantbird/content/instantbird.xul	chrome://vertical-tabs/content/test.css
+
+overlay		chrome://instantbird/content/instantbird.xul	chrome://vertical-tabs/content/test.xul
