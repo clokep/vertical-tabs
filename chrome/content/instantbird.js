@@ -69,6 +69,11 @@ let verticalTabs = {
 		// Get the document
 		let document = getBrowser().ownerDocument;
 		let tabbrowser = getBrowser();
+
+		let arrowscrollbox = document.getAnonymousElementByAttribute(tabbrowser.mTabContainer, "anonid", "arrowscrollbox");
+		arrowscrollbox.orient = "vertical"; // This is hard coded and must be changd in JS
+		
+		return;
 		
 		let tabbox = getBrowser().mTabBox;
 		tabbox.orient = "horizontal";
