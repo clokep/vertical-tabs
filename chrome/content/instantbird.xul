@@ -35,11 +35,11 @@
  -
  - ***** END LICENSE BLOCK ***** -->
 
-<?xml-stylesheet href="chrome://vertical-tabs/content/instantbird.css" type="text/css"?>
+<!--<?xml-stylesheet href="chrome://vertical-tabs/content/instantbird.css" type="text/css"?>//-->
 
 <overlay id="vertical-tabs"
 		 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-	<!--<script type="application/javascript" src="resource://vertical-tabs/cssParser.js" />
-	<script type="application/javascript" src="chrome://vertical-tabs/content/instantbird.js" />//-->
+	<script type="application/javascript" src="resource://vertical-tabs/cssParser.js" />
+	<script type="application/javascript" src="chrome://vertical-tabs/content/instantbird.js" />
 	
 </overlay>

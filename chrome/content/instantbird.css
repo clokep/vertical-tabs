@@ -5,22 +5,26 @@
 
 /*
 [Ib0.2only]:
-tabconversation							H	#conversations
-	tabbox								V	> tabbox
+Element									V/H	Identifier						anonid
+tabconversation							H	#conversations					N/A
+	tabbox								V	> tabbox						tabbox
 		hbox							H	.tab-drop-indicator-bar
 			hbox						H	.tab-drop-indicator
-		hbox							H	.tabbrowser-strip
-			tabs						H	.tabbrowser-tabs
-				stack					H	.tabs-stack
+		hbox							H	.tabbrowser-strip				strip
+			tooltip
+			menupopup						#context_newTab
+			tabs						H	.tabbrowser-tabs				tabcontainer
+				stack					H	.tabs-stack						
 					vbox				V	> vbox
 						hbox			H	> vbox > hbox
 					hbox				H	.tabs-container
-						arrowscrollbox	H	.tabbrowser-arrowscrollbox
-							scrollbox	H	> scrollbox
+						arrowscrollbox	H	.tabbrowser-arrowscrollbox		arrowscrollbox
+							scrollbox	H	> scrollbox						scrollbox
 								box		H	> box
 									tab	H	.tabbrowser-tab
 					stack				H	.tabs-alltabs-stack
-		tabpanels						H	> tabpanels
+		tabpanels						H	> tabpanels						panelcontainer
+			conversation				H
 */
 
 #conversations > tabbox {
@@ -47,7 +51,6 @@ tabconversation							H	#conversations
 }
 #conversation > tabbox > .tabbrowser-strip > .tabbrowser-tabs > .tabs-stack > .tabs-container > .tabbrowser-arrowscrollbox > scrollbox > box {
 	-moz-box-orient: vertical !important;
-	orient: vertical !important;
 }
 
 #conversation > tabbox > .tabbrowser-strip > .tabbrowser-tabs > .tabs-stack > .tabs-container > .tabbrowser-arrowscrollbox > scrollbox > box > tab {
