@@ -5,77 +5,90 @@
 
 /*
 [Ib0.2only]:
-Element									V/H	Identifier						anonid
-tabconversation							H	#conversations					N/A
-	tabbox								V	> tabbox						tabbox
-		hbox							H	.tab-drop-indicator-bar
+Element									V/H	Identifier						JavaScript
+tabconversation							H	#conversations
+	tabbox								V	> tabbox						getBrowser().mTabbox
+		hbox							H	.tab-drop-indicator-bar			getBrowser().mTabDropIndicatorBar
 			hbox						H	.tab-drop-indicator
-		hbox							H	.tabbrowser-strip				strip
+		hbox							H	.tabbrowser-strip				getBrowser().mStrip
 			tooltip
 			menupopup						#context_newTab
-			tabs						H	.tabbrowser-tabs				tabcontainer
+			tabs						H	.tabbrowser-tabs				getBrowser().mTabContainer
 				stack					H	.tabs-stack						
 					vbox				V	> vbox
 						hbox			H	> vbox > hbox
 					hbox				H	.tabs-container
-						arrowscrollbox	H	.tabbrowser-arrowscrollbox		arrowscrollbox
-							scrollbox	H	> scrollbox						scrollbox
+						arrowscrollbox	H	.tabbrowser-arrowscrollbox		getBrowser().mTabContainer.mTabstrip
+							scrollbox	H	> scrollbox						getBrowser().mTabContainer.mTabstrip.getAnonymousElementByAttribute(arrowscrollbox,"anonid","scrollbox")
 								box		H	> box
 									tab	H	.tabbrowser-tab
 					stack				H	.tabs-alltabs-stack
-		tabpanels						H	> tabpanels						panelcontainer
+		tabpanels						H	> tabpanels						
 			conversation				H
 */
 
-/*
-* Code based on: http://sites.google.com/site/jrweare/browser2.0
-*/
+/* Inspired by Stephen Clavering (clav): http://forums.mozillazine.org/viewtopic.php?p=238798#238798 */
 
-#conversations > tabbox {
-	-moz-box-orient: horizontal;
-}
+/* Note:
+ * All the -moz-box-* properties set below are mainly for reference
+ * The real work goes on in the JS that sets their corresponding attributes
+ * (except .tabbrowser-tab { -moz-box-align })
+ */
 
-.tabbrowser-strip {
-	-moz-box-orient: vertical;
-	/* note: you can set this to -moz-scrollbars-vertical instead,
-	but then the scrollbar will *always* be visible. this way
-	there is never a scrollbar, so it behaves like the tab bar
-	normally does */
-	/*overflow: -moz-scrollbars-none;*/
-}
-
-.tabbrowser-tabs {
-	-moz-box-orient: horizontal;
-	min-width: 10em;
-	-moz-box-align: start !important;
-}
-
-.tabbrowser-arrowscrollbox > scrollbox {
-	-moz-box-orient: vertical !important; /* This cannot be done in CSS and also must be done in JS */
-	-moz-box-align: stretch;
-	margin-right: 0;
-}
-
-.tabbrowser-tab {
-	-moz-box-align: start;
-	-moz-box-orient: horizontal;
-}
-/* to put the tabs on the right un-comment this line (not needed if using Tab Mix Plus)
-#content > tabbox {-moz-box-direction: reverse;} */
-/***** Tabbar *****/
-
-/* Background for tabbrowser strip *//*
-tabs.tabbrowser-tabs {
-	background-color: none !important;
-	background: url("bkgrd\\topbar.jpg") !important;
+/* This is set by JS. If you set both they cancel out! */
+/*#content[horiztabbar="reverse"] > tabbox,
+#content[vertitabbar="reverse"] > tabbox {
+	-moz-box-direction: reverse !important;
 }*/
 
-/* stop refcontrol context menu item */
-/*
-#refcontrol_options,
-#refcontrol_options_link,
-#refcontrol_options_image,
-#refcontrol_sep {
+#conversations > tabbox {
+	-moz-box-orient: horizontal !important;
+	max-height: none !important;
+}
+#conversations,
+#conversations > tabbox > .tabbrowser-strip,
+#conversations .tabbrowser-tabs,
+#conversations .tabs-stack,
+#conversations .tabs-container,
+#conversations .tabbrowser-arrowscrollbox,
+#conversations .tabbrowser-arrowscrollbox > scrollbox,
+#conversations .tabbrowser-arrowscrollbox > scrollbox > .scrollbox-innerbox,
+#conversations > tabbox > tabpanels {
+	-moz-box-orient: vertical !important;
+	max-height: none !important;	
+}
+
+#conversations .tabbrowser-arrowscrollbox .scrollbox-innerbox {
+	overflow-x: hidden !important;
+	overflow-y: auto !important;
+}
+/* Hide scrollbuttons since we're putting in a scrollbar */
+#conversations .tabbrowser-arrowscrollbox .scrollbutton-up,
+#conversations .tabbrowser-arrowscrollbox .scrollbutton-down {
 	display: none !important;
 }
-*/
+#conversations .tabbrowser-tab {
+	-moz-box-sizing: padding-box !important;
+	min-height: 24px !important;
+	max-height: 24px !important;
+	/*-moz-box-orient: horizontal !important;*/ /* not done by JS */
+	/*-moz-box-align: start !important;*/ /* not done by JS */
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	padding-top: 0 !important;
+}
+
+/* Hide bottom border */
+#conversations .tabs-stack > vbox:first-child {
+	display: none !important;
+}
+
+#conversations .tabbrowser-tabs {
+	-moz-box-align: stretch !important; /* Make sure tabs fill width */
+	background-image: none !important; /* Background was designed for repeat-x, and looks ugly when tiled vertically */
+}
+/* Cosmetic: hide tab side images */
+#conversations .tabbrowser-tab .tab-image-left/*[Fx2only] (and apparently Fx3/Mac)*/,
+#conversations .tabbrowser-tab .tab-image-right/*[Fx2only] (and apparently Fx3/Mac)*/ {
+	display: none !important;
+}

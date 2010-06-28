@@ -34,30 +34,6 @@
  *
  * ***** END LICENSE BLOCK ***** */
  
-//ss = "/* * Do not remove the @namespace line -- it's required for correct functioning*/@namespace url(\"http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul\"); /* set default namespace to XUL */#conversations > tabbox {-moz-box-orient: horizontal !important;}#conversation > tabbox > .tabbrowser-strip,#conversation > tabbox > .tabbrowser-strip > .tabbrowser-tabs,#conversation > tabbox > .tabbrowser-strip > .tabbrowser-tabs > .tabs-stack,#conversation > tabbox > .tabbrowser-strip > .tabbrowser-tabs > .tabs-stack > .tabs-container,#conversation > tabbox > .tabbrowser-strip > .tabbrowser-tabs > .tabs-stack > .tabs-container > .tabbrowser-arrowscrollbox,#conversation > tabbox > .tabbrowser-strip > .tabbrowser-tabs > .tabs-stack > .tabs-container > .tabbrowser-arrowscrollbox > scrollbox {	-moz-box-orient: vertical !important;}#conversation > tabbox > .tabbrowser-strip > .tabbrowser-tabs > .tabs-stack > .tabs-container > .tabbrowser-arrowscrollbox > scrollbox > box > tab {	min-height: 2em !important;	max-height: 2em !important;}";
-
-// From http://forums.mozillazine.org/viewtopic.php?p=921150#921150
-function getContents(aURL){
-	var ioService=Components.classes["@mozilla.org/network/io-service;1"]
-							.getService(Components.interfaces.nsIIOService);
-	var scriptableStream=Components
-						.classes["@mozilla.org/scriptableinputstream;1"]
-						.getService(Components.interfaces.nsIScriptableInputStream);
-
-	var channel=ioService.newChannel(aURL,null,null);
-	var input=channel.open();
-	scriptableStream.init(input);
-	var str=scriptableStream.read(input.available());
-	scriptableStream.close();
-	input.close();
-	return str;
-}
-
-/*try{
-	alert(getContents("chrome://browser/content/browser.css"));
-	alert(getContents("http://www.mozillazine.org/"));
-}catch(e){alert(e)}*/
-
 function dump(aMessage) {
 	var consoleService = Components.classes["@mozilla.org/consoleservice;1"]
 									 .getService(Components.interfaces.nsIConsoleService);
@@ -66,30 +42,38 @@ function dump(aMessage) {
 
 let verticalTabs = {
 	startup: function()	{
-		// http://www.hunlock.com/blogs/Totally_Pwn_CSS_with_Javascript
-		// Get the document
-		let document = getBrowser().ownerDocument;
 		let tabbrowser = getBrowser();
+		let document = tabbrowser.ownerDocument;
 		
-		return;
-
-		let arrowscrollbox = document.getAnonymousElementByAttribute(tabbrowser.mTabContainer, "anonid", "arrowscrollbox");
-		//let arrowscrollbox = tabbrowser.mTabstrip
-		arrowscrollbox.orient = "vertical"; // This is hard coded and must be changd in JS
-		
-		return;
-		
-		let tabbox = getBrowser().mTabBox;
+		let tabbox = tabbrowser.mTabBox;
 		tabbox.orient = "horizontal";
-
-		//let tabs = document.getAnonymousElementByAttribute(tabbox, "anonid", "tabcontainer");
-		//dump("Tabs: " + tabs);
 		
-		let tabbrowserstrip = tabbox.firstChild.nextSibling;
-		dump("1 " + tabbrowserstrip.tagName);
-		dump("2 " + tabbrowser.mTabContainer.tagName);
+		let tabstrip = tabbrowser.mStrip;
+		tabstrip.orient = "vertical";
+		
+		let tabcontainer = tabbrowser.mTabContainer;
+		tabcontainer.orient = "vertical";
+		tabcontainer.align = "stretch";
+		
+		let tabstack = document.getAnonymousNodes(tabcontainer)[0];
+		tabstack.orient = "vertical";
+		
+		let tabscontainer = tabstack.firstChild.nextSibling;
+		tabscontainer.orient = "vertical";
+
+		let arrowscrollbox = tabcontainer.mTabstrip;
+		arrowscrollbox.orient = "vertical";
+
+		let scrollbox = document.getAnonymousElementByAttribute(arrowscrollbox,"anonid","scrollbox");
+		scrollbox.orient = "vertical";
+
 		let tabs = tabbrowser.mTabs;
-		tabs.orient = "vertical";
+		tabs[0].sizing = "padding-box";
+		tabs[0].border = "4px solid";
+		tabs[0].backgroundColor = "black";
+		
+		let tabpanels = tabbox.lastChild.tagName;
+		tabpanels.orient = "vertical";
 	}
 }
 
