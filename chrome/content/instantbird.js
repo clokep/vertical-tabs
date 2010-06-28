@@ -66,11 +66,15 @@ function dump(aMessage) {
 
 let verticalTabs = {
 	startup: function()	{
+		// http://www.hunlock.com/blogs/Totally_Pwn_CSS_with_Javascript
 		// Get the document
 		let document = getBrowser().ownerDocument;
 		let tabbrowser = getBrowser();
+		
+		return;
 
 		let arrowscrollbox = document.getAnonymousElementByAttribute(tabbrowser.mTabContainer, "anonid", "arrowscrollbox");
+		//let arrowscrollbox = tabbrowser.mTabstrip
 		arrowscrollbox.orient = "vertical"; // This is hard coded and must be changd in JS
 		
 		return;
@@ -86,67 +90,6 @@ let verticalTabs = {
 		dump("2 " + tabbrowser.mTabContainer.tagName);
 		let tabs = tabbrowser.mTabs;
 		tabs.orient = "vertical";
-		
-		let arrowscrollbox = document.getAnonymousElementByAttribute(tabbrowser.mTabContainer, "anonid", "arrowscrollbox");
-		arrowscrollbox.orient = "vertical";
-
-		return;
-		
-		dump(document.getElementById("tabbrowser-tabs"));
-		dump(document.getAnonymousElementByAttribute(tabbrowser, "anonid", "arrowscrollbox"));
-		document.getAnonymousElementByAttribute(tabbox, "anonid", "arrowscrollbox").orient = "vertical";
-		//tabbrowser-tabs
-		
-		//document.getAnonymousElementByAttribute(tabs, "anonid", "scrollbox").orient = "vertical";
-		/*document.getAnonymousElementByAttribute(tabs, "anonid", "arrowscrollbox").style["-moz-box-orient"] = "vertical !important";
-		document.getAnonymousElementByAttribute(tabs, "anonid", "scrollbox").style["-moz-box-orient"] = "vertical !important";
-		dump(document.getAnonymousElementByAttribute(tabs, "anonid", "arrowscrollbox").childNodes.length);*/
-		return;
-
-		let anonids = {
-			"strip": {
-				"orient" : "vertical !important"
-			},
-			"tabcontainer" : {
-				"orient" : "vertical !important"
-			}
-		};
-
-		for (var anonid in anonids) {
-			var obj = anonids[anonid];
-			for (var property in obj) {
-				document.getAnonymousElementByAttribute(tabbrowser, "anonid", anonid)[property] = obj[property];
-				dump(document.getAnonymousElementByAttribute(tabbrowser, "anonid", anonid) + "\t" + property + "\t" + obj[property]);
-			}
-		}
-
-		return;
-
-		try {
-			let ss = getContents("chrome://vertical-tabs/content/instantbird.css");
-
-			var parser = new CSSParser();
-			var sheet = parser.parse(ss, false, false);
-			if (sheet) {
-				var i = (document.styleSheets.length - 1);
-				for (; i >= 0; i--) {
-					if (document.styleSheets[i].href == "chrome://instantbird/content/tabbrowser.css") {
-						/*for (var j = (document.styleSheets[i].cssRules.length - 1); j >= 0; j--) {
-							document.styleSheets[i].deleteRule(j); // Delete the jth rule
-						}*/
-						break;
-					}
-				}
-				
-				i = i ? i : document.styleSheets.length; // Add to a style sheet
-				for (var k = 0; k < sheet.cssRules.length; k++) {
-					document.styleSheets[i].insertRule(sheet.cssRules[k].cssText(), k);
-				}
-				
-				//let newStylesheet = document.styleSheets.length + 1;
-				//document.styleSheets[newStylesheet] = sheet;
-			}
-		} catch(e) {}
 	}
 }
 

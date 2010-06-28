@@ -27,63 +27,55 @@ tabconversation							H	#conversations					N/A
 			conversation				H
 */
 
-/* Widefox userChrome.css version 1.0.2 */
-/* Supports Firefox 2.x (tested on 2.0 - 2.0.0.x) */
+/*
+* Code based on: http://sites.google.com/site/jrweare/browser2.0
+*/
 
 #conversations > tabbox {
--moz-box-orient: horizontal;
+	-moz-box-orient: horizontal;
 }
 
 .tabbrowser-strip {
--moz-box-orient: vertical;
-/* note: you can set this to -moz-scrollbars-vertical instead,
-but then the scrollbar will *always* be visible. this way
-there is never a scrollbar, so it behaves like the tab bar
-normally does */
-overflow: -moz-scrollbars-none;
+	-moz-box-orient: vertical;
+	/* note: you can set this to -moz-scrollbars-vertical instead,
+	but then the scrollbar will *always* be visible. this way
+	there is never a scrollbar, so it behaves like the tab bar
+	normally does */
+	/*overflow: -moz-scrollbars-none;*/
 }
 
 .tabbrowser-tabs {
--moz-box-orient: horizontal;
-/* min-width: 50ex; */ /* >1680 pixels screens */
-/* min-width: 40ex; /* =1680,1600 pixels screens */
-/* min-width: 35ex; */ /* =1440 pixels screens */
-min-width: 30ex; /* <1440 pixels screens */
-/* min-width: 20ex; */ /* 1280 pixels screens */
-/* min-width: 17ex; */ /* this is almost the minimum to go down to on small screens */
--moz-box-align: start !important;
+	-moz-box-orient: horizontal;
+	min-width: 10em;
+	-moz-box-align: start !important;
 }
 
-/*> stack > vbox > hbox*/
-.tabbrowser-tabs > stack > hbox > *,
-.tabbrowser-tabs .tabbrowser-arrowscrollbox,
-.tabbrowser-tabs .tabbrowser-arrowscrollbox > scrollbox,
-.tabbrowser-tabs .tabbrowser-arrowscrollbox > scrollbox > box {
--moz-box-orient: vertical;
--moz-box-align: stretch;
+.tabbrowser-arrowscrollbox > scrollbox {
+	-moz-box-orient: vertical !important; /* This cannot be done in CSS and also must be done in JS */
+	-moz-box-align: stretch;
+	margin-right: 0;
 }
 
-.tabbrowser-tabs > stack > hbox > * > * > tab {
--moz-box-align: start;
--moz-box-orient: horizontal;
+.tabbrowser-tab {
+	-moz-box-align: start;
+	-moz-box-orient: horizontal;
 }
 /* to put the tabs on the right un-comment this line (not needed if using Tab Mix Plus)
 #content > tabbox {-moz-box-direction: reverse;} */
 /***** Tabbar *****/
 
-/* Background for tabbrowser strip */
+/* Background for tabbrowser strip *//*
 tabs.tabbrowser-tabs {
-background-color: none !important;
-background: url("bkgrd\\topbar.jpg") !important;
-}
+	background-color: none !important;
+	background: url("bkgrd\\topbar.jpg") !important;
+}*/
 
 /* stop refcontrol context menu item */
-#refcontrol_options, #refcontrol_options_link, #refcontrol_options_image, #refcontrol_sep
-{ display: none !important; }
-
-/* remove the search button (magnifying glass) */
-.search-go-button-stack { display: none !important; }
-/* remove the search engine drop-down button as this line */
-/* .searchbar-engine-button { display: none !important } */
-
-/* end of file userChrome.css */ 
+/*
+#refcontrol_options,
+#refcontrol_options_link,
+#refcontrol_options_image,
+#refcontrol_sep {
+	display: none !important;
+}
+*/
