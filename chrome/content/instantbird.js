@@ -40,23 +40,95 @@ function dump(aMessage) {
 	consoleService.logStringMessage("Vertical-Tabs: " + aMessage);
 }
 
+function swap(a,b) {
+	let x = a;
+	a = b;
+	b = a;
+}
+
 let verticalTabs = {
 	startup: function()	{
 		let tabbrowser = getBrowser();
+
+		tabbrowser._onDragStart = (function(aEvent) {
+			var target = aEvent.target;
+			if (target.localName == "tab" &&
+				aEvent.originalTarget.localName != "toolbarbutton") {
+				var dt = aEvent.dataTransfer;
+				dt.mozSetDataAt(TAB_DROP_TYPE, target, 0);
+
+				aEvent.stopPropagation();
+				target._dragOffsetY =
+				aEvent.screenY - window.screenY - target.getBoundingClientRect().top;
+				target._dragOffsetX = aEvent.screenX - window.screenX;
+			}
+
+			this._dragLeftWindow = false;
+		});
+		//_onDragOver
+		tabbrowser._onDragEnd = (function(aEvent) {
+			// Note: while this case is correctly handled here, this event
+			// isn't dispatched when the tab is moved within the tabstrip,
+			// see bug 460801.
+
+			// Collapse the drop indicator, just to be sure...
+			this.mTabDropIndicatorBar.collapsed = true;
+
+			// * mozUserCancelled = the user pressed ESC to cancel the drag
+			var dt = aEvent.dataTransfer;
+			if (dt.mozUserCancelled || dt.dropEffect != "none")
+				return;
+
+			// Disable detach within the browser toolbox
+			var eY = aEvent.screenY;
+			var wY = window.screenY;
+			var eX = aEvent.screenX;
+			// check if the drop point is horizontally within the window
+			if (eY > wY && eY < (wY + window.outerHeight)) {
+				var bo = this.mTabContainer.mTabstrip.boxObject;
+				// also avoid detaching if the the tab was dropped too close to
+				// the tabbar (half a tab)
+				var endScreenX = bo.screenX + 1.5 * bo.width;
+				if (eX < endScreenX && eX > window.screenX)
+					return;
+			}
+
+			var draggedTab = dt.mozGetDataAt(TAB_DROP_TYPE, 0);
+			let win = this.replaceTabsWithWindow([draggedTab]);
+			if (win) {
+				win.moveTo(eY - draggedTab._dragOffsetY,
+						   eX - draggedTab._dragOffsetX);
+			}
+			aEvent.stopPropagation();
+		});
+		tabbrowser.getNewIndex = (function(aEvent) {
+			var i;
+			if (window.getComputedStyle(this.parentNode, null).direction == "ltr") {
+				for (i = aEvent.target.localName == "tab" ? aEvent.target._tPos : 0; i < this.mTabs.length; i++)
+					if (aEvent.screenY < this.mTabs[i].boxObject.screenY + this.mTabs[i].boxObject.height / 2)
+						return i;
+			} else {
+				for (i = aEvent.target.localName == "tab" ? aEvent.target._tPos : 0; i < this.mTabs.length; i++)
+					if (aEvent.screenY > this.mTabs[i].boxObject.screenY + this.mTabs[i].boxObject.height / 2)
+						return i;
+			}
+			return this.mTabs.length;
+		});
+		
 		let document = tabbrowser.ownerDocument;
 		
 		let tabbox = tabbrowser.mTabBox;
-		tabbox.orient = "horizontal";
+		//tabbox.orient = "horizontal"; // Set in CSS
 		
 		let tabstrip = tabbrowser.mStrip;
 		tabstrip.orient = "vertical";
 		
 		let tabcontainer = tabbrowser.mTabContainer;
 		tabcontainer.orient = "vertical";
-		tabcontainer.align = "stretch";
+		//tabcontainer.align = "stretch"; // Set in CSS
 		
 		let tabstack = document.getAnonymousNodes(tabcontainer)[0];
-		tabstack.orient = "vertical";
+		tabstack.orient = "horizontal";
 		
 		let tabscontainer = tabstack.firstChild.nextSibling;
 		tabscontainer.orient = "vertical";
