@@ -3,6 +3,11 @@
 */
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* set default namespace to XUL */
 
+/* Tabstrip */
+.tabs-container:not([overflow="true"]) {
+	padding: 3px 0;
+}
+
 /* Tabs */
 .tabbrowser-tab {
 	/* winstripe -- http://lxr.instantbird.org/instantbird/source/instantbird/themes/tabbrowser-winstripe/tabbrowser.css#56 */

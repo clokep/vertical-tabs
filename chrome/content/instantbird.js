@@ -146,7 +146,74 @@ let verticalTabs = {
 		
 		let tabpanels = tabbox.lastChild.tagName;
 		tabpanels.orient = "vertical";
+		
+		let toRotate = ['.tabbrowser-tab', '.tabbrowser-tab:hover', '.tabbrowser-tab[selected="true"]'];
+		//verticalTabs.rotator.rotateCSS('left',toRotate,document);
 	}
 }
 
+verticalTabs.rotator = {
+	
+	// Replace * with: height, width or y, x
+	// *, min-*, max-*, line-*
+	_flippableProperties: [/([.+-]?)(height|y)/, /([.+-]?)(width|x)/],
+	_rotatableProperties: [
+		// Replace * with: top, right, bottom, left
+		// border-*-color, border-*-style, border-*-width, border-*, -moz-border-*-colors, *, margin-*, padding-*
+		[/([.+-]?)top([-.+]?)/, /([.+-]?)right([-.+]?)/, /([.+-]?)bottom([-.+]?)/, /([.+-]?)left([-.+]?)/],
+		// Replace * with: topright, topleft, bottomleft, bottomright
+		// -moz-border-radius-*, -moz-outline-radius-*
+		[/([.+-]?)topright([-.+]?)/, /([.+-]?)topleft([-.+]?)/, /([.+-]?)bottomleft([-.+]?)/, /([.+-]?)bottomright([-.+]?)/]
+	],
+	_shorthandProperties: [
+		'margin', 'padding', '-moz-border-radius'
+	],
+	
+	// http://blog.stevenlevithan.com/archives/faster-trim-javascript
+	trim11: function(str) {
+		str = str.replace(/^\s+/, '');
+		for (var i = str.length - 1; i >= 0; i--) {
+			if (/\S/.test(str.charAt(i))) {
+				str = str.substring(0, i + 1);
+				break;
+			}
+		}
+		return str;
+	},
+
+	// http://www.hunlock.com/blogs/Totally_Pwn_CSS_with_Javascript
+	// Direction is 'left' 'right' or 'flipx' 'flipy' or 'flip' (flipxy)
+	rotateCSS: function(direction,ruleNames,document) {
+		direction = direction.toLowerCase();
+		/*ruleNames = ruleNames.every(function(item) {
+			return item.toLowerCase();
+		});*/
+		// Loop over each style sheet
+
+		for (var i = 0; i < document.styleSheets.length; i++) {
+			// Loop over each rule in that style sheet
+			for (var j = 0; j < document.styleSheets[i].cssRules.length; j++) {
+				// Separate into individual selectors
+				var selectors = /[^{]+/.exec(document.styleSheets[i].cssRules[j].cssText)[0].split(",");
+				// Loop over each selector
+				for (var k = 0; k < selectors.length; k++) {
+					// If that rule's selector is our list of rules to rotate ...
+					if (ruleNames.indexOf(this.trim11(selectors[k])) > -1) {
+						// ... then rotate it in the direction that was given
+						document.styleSheets[i].cssRules[j] = verticalTabs.rotator[direction](document.styleSheets[i].cssRules[j]);
+						break;
+					}
+				}
+			}
+		}
+	},
+	left: function(aCssRule) {
+		// Loop over every style
+		for (var i = 0; i < aCssRule.style.length; i++) {
+			if (_flippableProperties[0].match(aCssRule.style[i])) {
+			
+			}
+		}
+	}
+}
 window.addEventListener("load", function(e) {verticalTabs.startup();}, false);

@@ -35,7 +35,7 @@
  -
  - ***** END LICENSE BLOCK ***** -->
 
-<!--<?xml-stylesheet href="chrome://vertical-tabs/content/instantbird.css" type="text/css"?>//-->
+<?xml-stylesheet href="chrome://vertical-tabs/skin/instantbird.css" type="text/css"?>
 
 <overlay id="vertical-tabs"
 		 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
