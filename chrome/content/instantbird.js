@@ -109,6 +109,9 @@ let verticalTabs = {
 			return this.mTabs.length;
 		});
 		
+		tabbrowser.mTabMaxWidth = "100px";
+		tabbrowser.mTabMinWidth = "100px";
+		
 		let document = tabbrowser.ownerDocument;
 		
 		let tabbox = tabbrowser.mTabBox;
@@ -123,6 +126,14 @@ let verticalTabs = {
 		
 		let tabstack = document.getAnonymousNodes(tabcontainer)[0];
 		tabstack.orient = "horizontal";
+
+		/*let tabsbottom = tabstack.firstChild.lastChild;
+		dump(tabsbottom.tagName);
+		let tabssplitter = document.createElement("splitter");
+		tabssplitter.className = "tabs-bottom";
+		tabssplitter.collapse = "before";
+		tabssplitter.appendChild(document.createElement("grippy"));
+		tabstack.firstChild.replaceChild(tabsbottom, tabssplitter);*/
 		
 		let tabscontainer = tabstack.firstChild.nextSibling;
 		tabscontainer.orient = "vertical";
@@ -134,9 +145,7 @@ let verticalTabs = {
 		scrollbox.orient = "vertical";
 
 		let tabs = tabbrowser.mTabs;
-		tabs[0].sizing = "padding-box";
-		tabs[0].border = "4px solid";
-		tabs[0].backgroundColor = "black";
+		// Set on creation of tabs?
 		
 		let tabpanels = tabbox.lastChild.tagName;
 		tabpanels.orient = "vertical";

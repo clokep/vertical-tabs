@@ -1,6 +1,6 @@
 content		vertical-tabs									chrome/content/
 overlay		chrome://instantbird/content/instantbird.xul	chrome://vertical-tabs/content/instantbird.xul
-#skin		vertical-tabs		classic/1.0					chrome/skin/gnomestripe/
-#skin		vertical-tabs		classic/1.0					chrome/skin/pinstripe/ os=Darwin
+skin		vertical-tabs		classic/1.0					chrome/skin/gnomestripe/ os=Linux
+skin		vertical-tabs		classic/1.0					chrome/skin/pinstripe/ os=Darwin
 skin		vertical-tabs		classic/1.0					chrome/skin/winstripe/ os=WinNT
 style		chrome://instantbird/content/instantbird.xul	chrome://vertical-tabs/content/instantbird.css

@@ -16,6 +16,7 @@ tabconversation							H	#conversations
 			tabs						H	.tabbrowser-tabs				getBrowser().mTabContainer
 				stack					H	.tabs-stack						
 					vbox				V	> vbox
+						spacer			V	> vbox > spacer
 						hbox			H	> vbox > hbox
 					hbox				H	.tabs-container
 						arrowscrollbox	H	.tabbrowser-arrowscrollbox		getBrowser().mTabContainer.mTabstrip

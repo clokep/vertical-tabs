@@ -45,17 +45,17 @@
 
 /* Tabs */
 .tabbrowser-tab {
-  border: none !important;
+  /*border: none !important;
   padding: 0px;
-  margin-bottom: 1px;
+  margin-bottom: 1px;*/ margin-bottom: 0px; margin-right: 1px;
 }
 
 .tabbrowser-tab[selected="true"] {
-  margin-bottom: 0px;
+  /*margin-bottom: 0px;*/ margin-bottom: 1px; margin-right: 0px;
 }
 
 .tabs-container {
-  min-height: 27px;
+  /*min-height: 27px;*/ min-height: none;
 }
 
 .tab-icon-image {
@@ -66,53 +66,53 @@
 }
 
 .tabs-bottom {
-  border-bottom: 1px solid threedshadow;
+  /*border-bottom: 1px solid threedshadow;*/ border-bottom: none; border-right: 1px solid threedshadow;
 }
 
-#context_newTab {
+/*#context_newTab {
   list-style-image: url("chrome://browser/skin/Toolbar-small.png");
   -moz-image-region: rect(0px 64px 16px 48px);
-}
+}*/
 
-#context_newTab[disabled] {
+/*#context_newTab[disabled] {
   -moz-image-region: rect(16px 64px 32px 48px);
-}
+}*/
 
-#context_reloadTab {
+/*#context_reloadTab {
   list-style-image: url("moz-icon://stock/gtk-refresh?size=menu");
-}
+}*/
 
-#context_closeOtherTabs {
+/*#context_closeOtherTabs {
   list-style-image: url("moz-icon://stock/gtk-clear?size=menu");
-}
+}*/
 
-#context_closeOtherTabs[disabled] {
+/*#context_closeOtherTabs[disabled] {
   list-style-image: url("moz-icon://stock/gtk-clear?size=menu&state=disabled");
-}
+}*/
 
-#context_undoCloseTab {
+/*#context_undoCloseTab {
   list-style-image: url("moz-icon://stock/gtk-undelete?size=menu");
-}
+}*/
 
-#context_closeTab {
+/*#context_closeTab {*/
   /*XXX Avoiding size=menu as some themes (e.g. Human) don't provide the icon
         at 16*16px (bug 426930), and upscaled images are ugly (bug 422179). */
-  list-style-image: url("moz-icon://stock/gtk-close?size=toolbar");
-}
+  /*list-style-image: url("moz-icon://stock/gtk-close?size=toolbar");
+}*/
 
 /* tabbrowser-tab focus ring */
-.tabbrowser-tab > .tab-text {
+/*.tabbrowser-tab > .tab-text {
   border: 1px dotted transparent;
-}
+}*/
 
-.tabbrowser-tab[selected="true"]:focus > .tab-text {
+/*.tabbrowser-tab[selected="true"]:focus > .tab-text {
   border: 1px dotted -moz-DialogText;
-}
+}*/
 
 /* Tab drag and drop */
 .tab-drop-indicator-bar {
-  height: 11px;
-  margin-top: -11px;
+  /*height: 11px;*/ width: 11px;
+  /*margin-top: -11px;*/ margin-left: -11px;
   position: relative;
   /* set -moz-margin-start to -1/2 indicator width: */
   -moz-margin-start: -5px;
@@ -121,7 +121,7 @@
 
 .tab-drop-indicator {
   z-index: 1;
-  margin-top: 5px;
+  /*margin-top: 5px;*/ margin-left: 5px;
   height: 11px;
   width: 11px;
   margin-bottom: -5px;

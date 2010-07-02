@@ -59,22 +59,22 @@
   /*-moz-appearance: none;
   background: url("chrome://instantbird/skin/tabbrowser/tab-bkgnd.png") repeat-x;*/
   /*height: 22px;*/ max-height: 22px;
-  margin: 0px 4px 0px 3px;
-  padding: 1px 0px 0px 1px;
+  /*margin: 3px 0px 4px;*/ margin: 0px 4px 0px 3px;
+  /*padding: 0px 1px 1px 0px;*/ padding: 1px 0px 0px 1px;
   /*border: 2px solid;*/
-  /*border-right-width: 1px;*/ border-right: non
-  /*border-bottom: none;*/ border-bottom-width: 1px;
+  /*border-right-width: 1px;*/ border-right: none;
+  /*border-bottom: none;*/ border-bottom: 1px solid;
   -moz-border-radius-topleft: 2px;
   /*-moz-border-radius-topright: 2px;*/ -moz-border-radius-topright: 0px; -moz-border-radius-bottomleft: 2px;
-  /*-moz-border-top-colors: ThreeDShadow rgba(255,255,255,.3);*/ -moz-border-left-colors: ThreeDShadow rgba(255,255,255,.3);
-  /*-moz-border-right-colors: rgba(0,0,0,.1); */ -moz-border-top-colors: rgba(0,0,0,.1);
-  /*-moz-border-left-colors: ThreeDShadow rgba(255,255,255,.3);*/ -moz-border-bottom-colors: ThreeDShadow rgba(255,255,255,.3);
+  /*-moz-border-top-colors: ThreeDShadow rgba(255,255,255,.3);*/
+  /*-moz-border-right-colors: rgba(0,0,0,.1); */ -moz-border-bottom-colors: rgba(0,0,0,.1);
+  /*-moz-border-left-colors: ThreeDShadow rgba(255,255,255,.3);*/
 }
 
 .tabbrowser-tab:hover,
 .tabbrowser-tab[selected="true"] {
-  border-width: 1px;
-  height: 23px;
+  /*border-width: 1px;
+  height: 23px;*/
   -moz-border-radius-topleft: 4px;
   /*-moz-border-radius-topright: 4px;*/ -moz-border-radius-topright: 0px; -moz-border-radius-bottomleft: 4px;
   /*-moz-border-top-colors: ThreeDShadow;*/ -moz-border-left-colors: ThreeDShadow;
