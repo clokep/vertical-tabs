@@ -60,8 +60,8 @@
 			<Description>
 				<!-- Instantbird //-->
 				<em:id>{33cb9019-c295-46dd-be21-8c4936574bee}</em:id>
-				<em:minVersion>0.2pre</em:minVersion>
-				<em:maxVersion>0.2.*</em:maxVersion>
+				<em:minVersion>0.2b2</em:minVersion>
+				<em:maxVersion>0.2pre</em:maxVersion>
 			</Description>
 		</em:targetApplication>
 </RDF>
