@@ -73,8 +73,8 @@
 
 .tabbrowser-tab:hover,
 .tabbrowser-tab[selected="true"] {
-  /*border-width: 1px;
-  height: 23px;*/
+  /*border-width: 1px;*/
+  /*height: 23px;*/ max-height: 22px;
   -moz-border-radius-topleft: 4px;
   /*-moz-border-radius-topright: 4px;*/ -moz-border-radius-topright: 0px; -moz-border-radius-bottomleft: 4px;
   /*-moz-border-top-colors: ThreeDShadow;*/ -moz-border-left-colors: ThreeDShadow;
