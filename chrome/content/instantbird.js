@@ -59,7 +59,9 @@ let verticalTabs = {
 
 			this._dragLeftWindow = false;
 		});
-		//_onDragOver
+		// Probably need: _setEffectAllowedForDataTransfer
+		// Definitely need: _onDragOver
+		// Possibly need _onDrop but I don't think so
 		tabbrowser._onDragEnd = (function(aEvent) {
 			// Note: while this case is correctly handled here, this event
 			// isn't dispatched when the tab is moved within the tabstrip,
@@ -74,9 +76,9 @@ let verticalTabs = {
 				return;
 
 			// Disable detach within the browser toolbox
-			var eY = aEvent.screenY;
-			var wY = window.screenY;
 			var eX = aEvent.screenX;
+			var wY = window.screenY;
+			var eY = aEvent.screenY;
 			// check if the drop point is horizontally within the window
 			if (eY > wY && eY < (wY + window.outerHeight)) {
 				var bo = this.mTabContainer.mTabstrip.boxObject;
@@ -90,8 +92,8 @@ let verticalTabs = {
 			var draggedTab = dt.mozGetDataAt(TAB_DROP_TYPE, 0);
 			let win = this.replaceTabsWithWindow([draggedTab]);
 			if (win) {
-				win.moveTo(eY - draggedTab._dragOffsetY,
-						   eX - draggedTab._dragOffsetX);
+				win.moveTo(eX - draggedTab._dragOffsetX,
+						   eY - draggedTab._dragOffsetY);
 			}
 			aEvent.stopPropagation();
 		});

@@ -1,4 +1,4 @@
-/* ***** BEGIN LICENSE BLOCK *****
+﻿/* ***** BEGIN LICENSE BLOCK *****
  * Version: MPL 1.1/GPL 2.0/LGPL 2.1
  *
  * The contents of this file are subject to the Mozilla Public License Version
@@ -111,8 +111,8 @@ tabbrowser > tabbox {
   -moz-background-clip: padding;
   min-width: 1px !important;
   text-align: center;
-  height: 24px;
-  background-image: url(chrome://instantbird/skin/tabbrowser/tab-bkgnd.png);
+  /*height: 24px;*/ max-height: 24px;
+  /*background-image: url(chrome://instantbird/skin/tabbrowser/tab-bkgnd.png);*/
 }
 
 .tabbrowser-arrowscrollbox > .tabs-newtab-button {
