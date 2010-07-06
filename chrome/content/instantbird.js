@@ -131,7 +131,7 @@ let verticalTabs = {
 
 		/*let tabsbottom = tabstack.firstChild.lastChild;
 		dump(tabsbottom.tagName);
-		let tabssplitter = document.createElement("splitter");
+		let tabssplitter = tabsbottom.ownerDocument.createElement("splitter");
 		tabssplitter.className = "tabs-bottom";
 		tabssplitter.collapse = "before";
 		tabssplitter.appendChild(document.createElement("grippy"));
