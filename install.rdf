@@ -41,7 +41,7 @@
 	<Description about="urn:mozilla:install-manifest">
 		<!-- Extension Information //-->
 		<em:id>vertical-tabs@patrick.cloke</em:id>
-		<em:version>0.1</em:version>
+		<em:version>0.2pre</em:version>
 		<em:type>2</em:type> <!-- Extension //-->
 
 		<!-- Front End MetaData //-->
@@ -60,8 +60,8 @@
 			<Description>
 				<!-- Instantbird //-->
 				<em:id>{33cb9019-c295-46dd-be21-8c4936574bee}</em:id>
-				<em:minVersion>0.2b2</em:minVersion>
-				<em:maxVersion>0.2pre</em:maxVersion>
+				<em:minVersion>0.2pre</em:minVersion>
+				<em:maxVersion>0.2</em:maxVersion>
 			</Description>
 		</em:targetApplication>
 	</Description>

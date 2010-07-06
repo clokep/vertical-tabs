@@ -59,8 +59,123 @@ let verticalTabs = {
 
 			this._dragLeftWindow = false;
 		});
-		// Probably need: _setEffectAllowedForDataTransfer
-		// Definitely need: _onDragOver
+		tabbrowser._setEffectAllowedForDataTransfer = (function(aEvent) {
+			var dt = aEvent.dataTransfer;
+			// Disallow dropping multiple items
+			if (dt.mozItemCount > 1)
+				return dt.effectAllowed = "none";
+
+			var types = dt.mozTypesAt(0);
+			var sourceNode = null;
+			// tabs are always added as the first type
+			if (types[0] == TAB_DROP_TYPE) {
+				var sourceNode = dt.mozGetDataAt(TAB_DROP_TYPE, 0);
+				if (sourceNode instanceof XULElement &&
+					sourceNode.localName == "tab" &&
+					(sourceNode.parentNode == this.mTabContainer ||
+					(sourceNode.ownerDocument.defaultView instanceof ChromeWindow &&
+					sourceNode.ownerDocument.documentElement.getAttribute("windowtype") == "Messenger:convs"))) {
+					if (sourceNode.parentNode == this.mTabContainer &&
+						(aEvent.screenY >= sourceNode.boxObject.screenY &&
+							aEvent.screenY <= (sourceNode.boxObject.screenY +
+											   sourceNode.boxObject.height))) {
+						return dt.effectAllowed = "none";
+					}
+
+					return dt.effectAllowed = "copyMove";
+				}
+			}
+
+			return dt.effectAllowed = "none";
+		});
+		tabbrowser._onDragOver = (function(aEvent) {
+			var effects = this._setEffectAllowedForDataTransfer(aEvent);
+
+			var ib = this.mTabDropIndicatorBar;
+			if (effects == "" || effects == "none") {
+			  ib.collapsed = "true";
+			  return;
+			}
+			aEvent.preventDefault();
+			aEvent.stopPropagation();
+
+			var tabStrip = this.mTabContainer.mTabstrip;
+			var ltr = (window.getComputedStyle(this.parentNode, null).direction
+					   == "ltr");
+
+			// autoscroll the tab strip if we drag over the scroll
+			// buttons, even if we aren't dragging a tab, but then
+			// return to avoid drawing the drop indicator
+			var pixelsToScroll = 0;
+			if (this.mTabContainer.getAttribute("overflow") == "true") {
+				var targetAnonid = aEvent.originalTarget.getAttribute("anonid");
+				switch (targetAnonid) {
+					case "scrollbutton-up":
+						pixelsToScroll = tabStrip.scrollIncrement * -1;
+						break;
+					case "scrollbutton-down":
+					case "alltabs-button":
+					case "newtab-button":
+						pixelsToScroll = tabStrip.scrollIncrement;
+						break;
+				}
+				if (pixelsToScroll)
+					tabStrip.scrollByPixels((ltr ? 1 : -1) * pixelsToScroll);
+			}
+
+			var newIndex = this.getNewIndex(aEvent);
+			var ib = this.mTabDropIndicatorBar;
+			var ind = ib.firstChild;
+			var tabStripBoxObject = tabStrip.scrollBoxObject;
+			var minMargin = tabStripBoxObject.y - this.boxObject.y;
+			// make sure we don't place the tab drop indicator past the
+			// edge, or the containing box will flex and stretch
+			// the tab drop indicator bar, which will flex the url bar.
+			// XXX todo
+			// just use first value if you can figure out how to get
+			// the tab drop indicator to crop instead of flex and stretch
+			// the tab drop indicator bar.
+			var maxMargin = Math.min(minMargin + tabStripBoxObject.height,
+									 ib.boxObject.y + ib.boxObject.height -
+									 ind.boxObject.height);
+			if (!ltr)
+				[minMargin, maxMargin] = [this.boxObject.height - maxMargin,
+										  this.boxObject.height - minMargin];
+			var newMargin, tabBoxObject;
+			if (pixelsToScroll) {
+				// if we are scrolling, put the drop indicator at the edge
+				// so that it doesn't jump while scrolling
+				newMargin = (pixelsToScroll > 0) ? maxMargin : minMargin;
+			}
+			else {
+				if (newIndex == this.mTabs.length) {
+					tabBoxObject =  this.mTabs[newIndex-1].boxObject;
+					if (ltr)
+						newMargin = tabBoxObject.screenY - this.boxObject.screenY
+									+ tabBoxObject.height;
+					else
+						newMargin = this.boxObject.screenY - tabBoxObject.screenY
+									+ this.boxObject.height;
+				}
+				else {
+					tabBoxObject =  this.mTabs[newIndex].boxObject;
+					if (ltr)
+						newMargin = tabBoxObject.screenY - this.boxObject.screenY;
+					else
+						newMargin = this.boxObject.screenY - tabBoxObject.screenY
+									+ this.boxObject.height - tabBoxObject.height;
+				}
+				// ensure we never place the drop indicator beyond our limits
+				if (newMargin < minMargin)
+					newMargin = minMargin;
+				else if (newMargin > maxMargin)
+					newMargin = maxMargin;
+			}
+
+			ind.style.MozMarginStart = newMargin + 'px';
+
+			ib.collapsed = false;
+		});
 		// Possibly need _onDrop but I don't think so
 		tabbrowser._onDragEnd = (function(aEvent) {
 			// Note: while this case is correctly handled here, this event
@@ -110,9 +225,6 @@ let verticalTabs = {
 			}
 			return this.mTabs.length;
 		});
-		
-		tabbrowser.mTabMaxWidth = "100px";
-		tabbrowser.mTabMinWidth = "100px";
 		
 		let document = tabbrowser.ownerDocument;
 		

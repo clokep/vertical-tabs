@@ -6,6 +6,9 @@ R - Removed
 F - Fixed
 K - Known issue
 
+0.2		2010/07/xx	(Ib 0.2 - 0.3pre)
+
+
 0.1		2010/07/05	(Ib 0.2b2 - 0.2pre)
 A		Small UI tweaks for Windows (fix bottom borders, fix scroll arrows)
 F	7	UI no longer shifts when adding a second tab
