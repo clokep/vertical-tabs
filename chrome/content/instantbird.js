@@ -15,7 +15,7 @@
  *
  * The Initial Developer of the Original Code is
  * Patrick Cloke <clokep@gmail.com>.
- * Portions created by the Initial Developer are Copyright (C) 1998
+ * Portions created by the Initial Developer are Copyright (C) 2010
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -37,7 +37,7 @@
 function dump(aMessage) {
 	var consoleService = Components.classes["@mozilla.org/consoleservice;1"]
 									 .getService(Components.interfaces.nsIConsoleService);
-	consoleService.logStringMessage("Vertical-Tabs: " + aMessage);
+	consoleService.logStringMessage("Vertical Tabs: " + aMessage);
 }
 
 let verticalTabs = {
