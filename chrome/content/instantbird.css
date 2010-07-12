@@ -49,7 +49,8 @@ tabconversation							H	#conversations
 	max-height: none !important;
 }
 #conversations,
-#conversations > tabbox > .tabbrowser-strip,
+#conversations .tab-drop-indicator-bar,
+#conversations .tabbrowser-strip,
 #conversations .tabbrowser-tabs,
 #conversations .tabs-stack,
 #conversations .tabs-container,
@@ -71,8 +72,3 @@ tabconversation							H	#conversations
 	max-height: none;
 	-moz-box-orient: horizontal !important; /* Not set in JS */
 }
-
-/*#conversations .tabbrowser-tabs {
-	-moz-box-align: stretch !important;*/ /* Make sure tabs fill width, not set in JS */
-	/*background-image: none !important; *//* Background was designed for repeat-x, and looks ugly when tiled vertically */
-/*}*/

@@ -128,21 +128,22 @@
 
 /* Tab DnD indicator */
 .tab-drop-indicator-bar {
-  /*height: 11px;*/ width: 11px;
-  /*margin-top: -11px;*/ margin-left: -11px;
-  position: relative;
+  /*height: 11px;*/ max-height: none; width: 11px; width: 15px;
+  /*margin-top: -11px;*/ margin-top: 0px; /*margin-left: -11px;*/ margin-left: -7px;
+  /*position: relative;*/
   /* set -moz-margin-start to -1/2 indicator width: */
-  -moz-margin-start: -5px;
-  -moz-margin-end: -8px;
+  /*-moz-margin-start: -5px;*/ margin-top: -5px;
+  /*-moz-margin-end: -8px;*/ margin-bottom: -8px;
 }
 
 .tab-drop-indicator {
-  /*margin-top: 11px;*/ margin-left: 11px;
+  /*margin-top: 11px;*/ margin-top: 0px; /*margin-left: 11px;*/ margin-left: 0px;
   /*height: 11px;*/ width: 11px;
   /*width: 11px;*/ height: 11px;
-  /*margin-bottom: -11px;*/ margin-right: -11px;
+  /*margin-bottom: -11px;*/ margin-bottom: 0px; margin-right: -11px;
   /*position: relative;
   background: url('chrome://instantbird/skin/tabbrowser/tabDragIndicator.png') 50% 50% no-repeat;*/
+  -moz-transform: rotate(-90deg);
 }
 
 /* Tab close button */

@@ -135,7 +135,7 @@ let verticalTabs = {
 			// just use first value if you can figure out how to get
 			// the tab drop indicator to crop instead of flex and stretch
 			// the tab drop indicator bar.
-			var maxMargin = Math.min(minMargin + tabStripBoxObject.height,
+			var maxMargin = Math.max(minMargin + tabStripBoxObject.height,
 									 ib.boxObject.y + ib.boxObject.height -
 									 ind.boxObject.height);
 			if (!ltr)
@@ -172,7 +172,7 @@ let verticalTabs = {
 					newMargin = maxMargin;
 			}
 
-			ind.style.MozMarginStart = newMargin + 'px';
+			ind.style.marginTop = newMargin + 'px';
 
 			ib.collapsed = false;
 		});
