@@ -234,7 +234,7 @@
 }*/
 
 .tabbrowser-arrowscrollbox > .scrollbutton-up {
-  /*border-left-style: none;*/ border-left-style: 2px solid; border-top-style: none;
+  /*border-left-style: none;*/ border-left: 2px solid; border-top-style: none;
   /*list-style-image: url("chrome://instantbird/skin/tabbrowser/tab-arrow-left.png");*/
   /*-moz-border-radius-topright: 2px;*/ -moz-border-radius-topleft: 2px;
 }
@@ -250,7 +250,7 @@
 .tabbrowser-arrowscrollbox > .scrollbutton-down,
 .tabs-container > .tabs-newtab-button,
 .tabs-alltabs-button {
-  /*border-right-style: none;*/ border-right-style: 2px solid; border-bottom-style: none;
+  /*border-right-style: none;*/ border-right: 2px solid; border-bottom-style: none;
   /*-moz-border-radius-topleft: 2px;*/ -moz-border-radius-bottomleft: 2px;
 }
 
