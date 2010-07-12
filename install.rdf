@@ -48,12 +48,12 @@
 		<em:name>Vertical Tabs</em:name>
 		<em:description>Changes the tabs on the conversation window to be vertical.</em:description>
 		<em:creator>Patrick Cloke</em:creator>
-		<!--<em:homepageURL></em:homepageURL>//-->
+		<em:homepageURL>http://code.google.com/p/vertical-tabs/</em:homepageURL>
 
 		<!-- Internal References //-->
-		<!--<em:aboutURL>chrome://microblog-mailnews/chrome/content/about.xul</em:aboutURL>//-->
-		<!--<em:iconURL>chrome://microblog-mailnews/chrome/content/thundershows.png</em:iconURL>//-->
-		<!--<em:optionsURL>chrome://microblog-mailnews/chrome/content/options.xul</em:optionsURL>//-->
+		<!--<em:aboutURL>chrome://vertical-tabs/chrome/content/about.xul</em:aboutURL>//-->
+		<!--<em:iconURL>chrome://vertical-tabs/chrome/content/vertical-tabs.png</em:iconURL>//-->
+		<!--<em:optionsURL>chrome://vertical-tabs/chrome/content/options.xul</em:optionsURL>//-->
 
 		<!-- Target Applications //-->
 		<em:targetApplication>
