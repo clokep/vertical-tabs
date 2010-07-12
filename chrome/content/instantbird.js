@@ -100,8 +100,6 @@ let verticalTabs = {
 			aEvent.stopPropagation();
 
 			var tabStrip = this.mTabContainer.mTabstrip;
-			var ltr = (window.getComputedStyle(this.parentNode, null).direction
-					   == "ltr");
 
 			// autoscroll the tab strip if we drag over the scroll
 			// buttons, even if we aren't dragging a tab, but then
@@ -120,7 +118,7 @@ let verticalTabs = {
 						break;
 				}
 				if (pixelsToScroll)
-					tabStrip.scrollByPixels((ltr ? 1 : -1) * pixelsToScroll);
+					tabStrip.scrollByPixels(pixelsToScroll);
 			}
 
 			var newIndex = this.getNewIndex(aEvent);
@@ -138,9 +136,6 @@ let verticalTabs = {
 			var maxMargin = Math.max(minMargin + tabStripBoxObject.height,
 									 ib.boxObject.y + ib.boxObject.height -
 									 ind.boxObject.height);
-			if (!ltr)
-				[minMargin, maxMargin] = [this.boxObject.height - maxMargin,
-										  this.boxObject.height - minMargin];
 			var newMargin, tabBoxObject;
 			if (pixelsToScroll) {
 				// if we are scrolling, put the drop indicator at the edge
@@ -150,20 +145,12 @@ let verticalTabs = {
 			else {
 				if (newIndex == this.mTabs.length) {
 					tabBoxObject =  this.mTabs[newIndex-1].boxObject;
-					if (ltr)
-						newMargin = tabBoxObject.screenY - this.boxObject.screenY
-									+ tabBoxObject.height;
-					else
-						newMargin = this.boxObject.screenY - tabBoxObject.screenY
-									+ this.boxObject.height;
+					newMargin = tabBoxObject.screenY - this.boxObject.screenY
+								+ tabBoxObject.height;
 				}
 				else {
 					tabBoxObject =  this.mTabs[newIndex].boxObject;
-					if (ltr)
-						newMargin = tabBoxObject.screenY - this.boxObject.screenY;
-					else
-						newMargin = this.boxObject.screenY - tabBoxObject.screenY
-									+ this.boxObject.height - tabBoxObject.height;
+					newMargin = tabBoxObject.screenY - this.boxObject.screenY;
 				}
 				// ensure we never place the drop indicator beyond our limits
 				if (newMargin < minMargin)
@@ -214,15 +201,9 @@ let verticalTabs = {
 		});
 		tabbrowser.getNewIndex = (function(aEvent) {
 			var i;
-			if (window.getComputedStyle(this.parentNode, null).direction == "ltr") {
-				for (i = aEvent.target.localName == "tab" ? aEvent.target._tPos : 0; i < this.mTabs.length; i++)
-					if (aEvent.screenY < this.mTabs[i].boxObject.screenY + this.mTabs[i].boxObject.height / 2)
-						return i;
-			} else {
-				for (i = aEvent.target.localName == "tab" ? aEvent.target._tPos : 0; i < this.mTabs.length; i++)
-					if (aEvent.screenY > this.mTabs[i].boxObject.screenY + this.mTabs[i].boxObject.height / 2)
-						return i;
-			}
+			for (i = aEvent.target.localName == "tab" ? aEvent.target._tPos : 0; i < this.mTabs.length; i++)
+				if (aEvent.screenY < this.mTabs[i].boxObject.screenY + this.mTabs[i].boxObject.height / 2)
+					return i;
 			return this.mTabs.length;
 		});
 		
