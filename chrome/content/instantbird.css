@@ -62,9 +62,10 @@ tabconversation							H	#conversations
 	max-height: none !important;	
 }
 
-#conversations .tabbrowser-arrowscrollbox .scrollbox-innerbox {
-	/*overflow-x: hidden !important;
-	overflow-y: auto !important;*/
+/* Tab scroll buttons */
+.tabbrowser-arrowscrollbox > .scrollbutton-up > .toolbarbutton-icon,
+.tabbrowser-arrowscrollbox > .scrollbutton-down > .toolbarbutton-icon {
+  -moz-transform: rotate(90deg);
 }
 
 /* Bottom border */

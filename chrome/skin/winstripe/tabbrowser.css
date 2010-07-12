@@ -138,8 +138,8 @@
 
 .tab-drop-indicator {
   /*margin-top: 11px;*/ margin-top: 0px; /*margin-left: 11px;*/ margin-left: 0px;
-  /*height: 11px;*/ width: 11px;
-  /*width: 11px;*/ height: 11px;
+  /*height: 11px;
+  width: 11px;*/
   /*margin-bottom: -11px;*/ margin-bottom: 0px; margin-right: -11px;
   /*position: relative;
   background: url('chrome://instantbird/skin/tabbrowser/tabDragIndicator.png') 50% 50% no-repeat;*/
@@ -270,11 +270,6 @@
 /*.tabbrowser-arrowscrollbox > .scrollbutton-down[chromedir="rtl"] {
   list-style-image: url("chrome://instantbird/skin/tabbrowser/tab-arrow-left.png");
 }*/
-
-.tabbrowser-arrowscrollbox > .scrollbutton-up > .toolbarbutton-icon,
-.tabbrowser-arrowscrollbox > .scrollbutton-down > .toolbarbutton-icon {
-  -moz-transform: rotate(90deg);
-}
 
 /*.tabs-newtab-button {
   list-style-image: url(chrome://instantbird/skin/tabbrowser/newtab.png);

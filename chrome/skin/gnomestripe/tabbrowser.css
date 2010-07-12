@@ -46,24 +46,24 @@
 /* Tabs */
 .tabbrowser-tab {
   /*border: none !important;
-  padding: 0px;
-  margin-bottom: 1px;*/ margin-bottom: 0px; margin-right: 1px;
+  padding: 0px;*/
+  /*margin-bottom: 1px;*/ margin-bottom: 0px; margin-right: 1px;
 }
 
 .tabbrowser-tab[selected="true"] {
-  /*margin-bottom: 0px;*/ margin-bottom: 1px; margin-right: 0px;
+  /*margin-bottom: 0px;*/ margin-right: 0px;
 }
 
 .tabs-container {
-  /*min-height: 27px;*/ min-height: none;
+  /*min-height: 27px;*/ max-height: none;
 }
 
-.tab-icon-image {
+/*.tab-icon-image {
   width: 16px;
   height: 16px;
   -moz-margin-start: 4px;
   -moz-margin-end: 3px;
-}
+}*/
 
 .tabs-bottom {
   /*border-bottom: 1px solid threedshadow;*/ border-bottom: none; border-right: 1px solid threedshadow;
@@ -112,103 +112,103 @@
 /* Tab drag and drop */
 .tab-drop-indicator-bar {
   /*height: 11px;*/ width: 11px;
-  /*margin-top: -11px;*/ margin-left: -11px;
-  position: relative;
+  /*margin-top: -11px;*/ margin-top: 0px; margin-left: -11px;
+  /*position: relative;*/
   /* set -moz-margin-start to -1/2 indicator width: */
-  -moz-margin-start: -5px;
-  -moz-margin-end: -11px;
+  /*-moz-margin-start: -5px;*/ margin-top: -5px;
+  /*-moz-margin-end: -11px;*/ margin-bottom: -11px;
 }
 
 .tab-drop-indicator {
-  z-index: 1;
-  /*margin-top: 5px;*/ margin-left: 5px;
-  height: 11px;
-  width: 11px;
-  margin-bottom: -5px;
-  position: relative;
-  background: url('chrome://instantbird/skin/tabbrowser/tabDragIndicator.png') 50% 50% no-repeat;
+  /*z-index: 1;*/
+  /*margin-top: 5px;*/ margin-top: 0px; margin-left: 5px;
+  /*height: 11px;*/ width: 11px;
+  /*width: 11px;*/ height: 11px;
+  /*margin-bottom: -5px;*/ margin-bottom: 0px; margin-right: -5px;
+  /*position: relative;
+  background: url('chrome://instantbird/skin/tabbrowser/tabDragIndicator.png') 50% 50% no-repeat;*/
 }
 
 /* In-tab close button */
-.tab-close-button > .toolbarbutton-icon {
+/*.tab-close-button > .toolbarbutton-icon {*/
   /* XXX Buttons have padding in widget/ that we don't want here but can't override with good CSS, so we must
      use evil CSS to give the impression of smaller content */
-  margin: -3px !important;
-}
+  /*margin: -3px !important;
+}*/
 
-.tab-close-button {
+/*.tab-close-button {
   -moz-margin-end: 6px;
   padding: 0px;
   border: none;
   list-style-image: url("moz-icon://stock/gtk-close?size=menu");
-}
+}*/
 
-.tabbrowser-tab[selected="true"] > .tab-close-button {
+/*.tabbrowser-tab[selected="true"] > .tab-close-button {*/
   /* Make this button focusable so clicking on it will not focus the tab while
      it's getting closed */
-  -moz-user-focus: normal;
-}
+  /*-moz-user-focus: normal;
+}*/
 
-.tab-close-button:focus {
+/*.tab-close-button:focus {
   outline: none !important;
-}
+}*/
 
 /* Tabstrip new tab button */
 .tabs-newtab-button {
-  list-style-image: url("moz-icon://stock/gtk-add?size=menu");
-  border: none;
-  margin-bottom: 1px;
+  /*list-style-image: url("moz-icon://stock/gtk-add?size=menu");
+  border: none;*/
+  /*margin-bottom: 1px;*/ margin-bottom: 0px; margin-right: 1px;
 }
 
 .tabbrowser-arrowscrollbox > .tabs-newtab-button {
-  width: 32px;
+  /*width: 32px;*/ height: 32px;
 }
 
-.tabs-newtab-button > .toolbarbutton-icon {
+/*.tabs-newtab-button > .toolbarbutton-icon {
   margin-top: -2px;
   margin-bottom: -2px;
-}
+}*/
 
 /* Tabstrip close button */
-.tabs-closebutton {
+/*.tabs-closebutton {
   list-style-image: url("moz-icon://stock/gtk-close?size=menu");
   border: none;
   margin-bottom: 1px;
-}
+}*/
 
-.tabs-closebutton > .toolbarbutton-icon {
+/*.tabs-closebutton > .toolbarbutton-icon {
   margin: 0;
-}
+}*/
 
 /* Tabbrowser arrowscrollbox arrows */
-.tabbrowser-arrowscrollbox > .scrollbutton-up {
+/*.tabbrowser-arrowscrollbox > .scrollbutton-up {
   -moz-appearance: tab-scroll-arrow-back;
   margin: 0px;
-}
+}*/
 
-.tabbrowser-arrowscrollbox > .scrollbutton-down {
+/*.tabbrowser-arrowscrollbox > .scrollbutton-down {
   -moz-appearance: tab-scroll-arrow-forward;
   margin: 0px;
-}
+}*/
 
-.tabs-alltabs-box-animate {
+/*.tabs-alltabs-box-animate {
   background-color: Highlight;
   opacity: 0.0;
-}
+}*/
 
 /* All tabs menupopup */
-.alltabs-item[selected="true"] {
+/*.alltabs-item[selected="true"] {
   font-weight: bold;
-}
+}*/
 
-.tabs-alltabs-button {
+/*.tabs-alltabs-button {
   margin-bottom: 1px;
-}
+}*/
 
-.tabs-alltabs-button > .toolbarbutton-menu-dropmarker {
+/*.tabs-alltabs-button > .toolbarbutton-menu-dropmarker {
   margin-bottom: -1px;
-}
+}*/
 
-.tabs-alltabs-button > .toolbarbutton-icon {
+/*.tabs-alltabs-button > .toolbarbutton-icon {
   display: none;
-}
+}*/
