@@ -8,7 +8,7 @@ K - Known issue
 
 0.2		2010/07/xx	(Ib 0.2 - 0.3pre)
 F	6	Drag and Drop works with indicators
-
+F		Fixed better support for Linux/Mac -- untested!
 
 0.1		2010/07/05	(Ib 0.2b2 - 0.2pre)
 A		Small UI tweaks for Windows (fix bottom borders, fix scroll arrows)
