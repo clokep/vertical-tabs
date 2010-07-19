@@ -1,4 +1,4 @@
-/* ***** BEGIN LICENSE BLOCK *****
+﻿/* ***** BEGIN LICENSE BLOCK *****
  * Version: MPL 1.1/GPL 2.0/LGPL 2.1
  *
  * The contents of this file are subject to the Mozilla Public License Version
@@ -128,7 +128,7 @@
 
 /* Tab DnD indicator */
 .tab-drop-indicator-bar {
-  /*height: 11px;*/ max-height: none; width: 11px; width: 15px;
+  /*height: 11px;*/ max-height: none; /*width: 11px;*/ width: 15px;
   /*margin-top: -11px;*/ margin-top: 0px; /*margin-left: -11px;*/ margin-left: -7px;
   /*position: relative;*/
   /* set -moz-margin-start to -1/2 indicator width: */
