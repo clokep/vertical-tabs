@@ -48,10 +48,11 @@
   /*border: none !important;
   padding: 0px;*/
   /*margin-bottom: 1px;*/ margin-bottom: 0px; margin-right: 1px;
+  max-height: 24px;
 }
 
 .tabbrowser-tab[selected="true"] {
-  /*margin-bottom: 0px;*/ margin-right: 0px;
+  /*margin-bottom: 0px;*/ margin-right: 1px;
 }
 
 .tabs-container {
@@ -111,8 +112,8 @@
 
 /* Tab drag and drop */
 .tab-drop-indicator-bar {
-  /*height: 11px;*/ width: 11px;
-  /*margin-top: -11px;*/ margin-top: 0px; margin-left: -11px;
+  /*height: 11px;*/ max-height: none; /*width: 11px;*/ width: 16px;
+  /*margin-top: -11px;*/ margin-top: 0px; /*margin-left: -11px;*/ margin-left: -5px;
   /*position: relative;*/
   /* set -moz-margin-start to -1/2 indicator width: */
   /*-moz-margin-start: -5px;*/ margin-top: -5px;
@@ -121,12 +122,13 @@
 
 .tab-drop-indicator {
   /*z-index: 1;*/
-  /*margin-top: 5px;*/ margin-top: 0px; margin-left: 5px;
-  /*height: 11px;*/ width: 11px;
-  /*width: 11px;*/ height: 11px;
+  /*margin-top: 5px;*/ margin-top: 0px; /*margin-left: 5px;*/ margin-left: 0px;
+  /*height: 11px;
+  width: 11px;*/
   /*margin-bottom: -5px;*/ margin-bottom: 0px; margin-right: -5px;
   /*position: relative;
   background: url('chrome://instantbird/skin/tabbrowser/tabDragIndicator.png') 50% 50% no-repeat;*/
+  -moz-transform: rotate(-90deg);
 }
 
 /* In-tab close button */
