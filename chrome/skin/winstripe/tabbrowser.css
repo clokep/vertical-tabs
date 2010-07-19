@@ -366,3 +366,9 @@
   /*-moz-border-radius-topleft: 0px;*/ -moz-border-radius-bottomleft: 0px;
   /*-moz-border-radius-topright: 2px;*/ -moz-border-radius-topleft: 2px;
 }
+
+/* Tab scroll buttons */
+.tabbrowser-arrowscrollbox > .scrollbutton-up > .toolbarbutton-icon,
+.tabbrowser-arrowscrollbox > .scrollbutton-down > .toolbarbutton-icon {
+  -moz-transform: rotate(90deg);
+}

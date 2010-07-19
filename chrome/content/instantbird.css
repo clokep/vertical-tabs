@@ -65,12 +65,6 @@
 	max-height: none !important;	
 }
 
-/* Tab scroll buttons */
-.tabbrowser-arrowscrollbox > .scrollbutton-up,
-.tabbrowser-arrowscrollbox > .scrollbutton-down {
-  -moz-transform: rotate(90deg);
-}
-
 /* Bottom border */
 #conversations .tabs-stack > vbox {
 	max-height: none;
