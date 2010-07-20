@@ -47,12 +47,12 @@
 .tabbrowser-tab {
   /*border: none !important;
   padding: 0px;*/
-  /*margin-bottom: 1px;*/ margin-bottom: 0px; margin-right: 1px;
-  max-height: 24px;
+  /*margin-bottom: 1px;*/ margin-bottom: 0px; /*margin-right: 1px;*/
+  max-height: 22px;
 }
 
 .tabbrowser-tab[selected="true"] {
-  /*margin-bottom: 0px;*/ margin-right: 1px;
+  /*margin-bottom: 0px;*/ /*margin-right: 1px;*/
 }
 
 .tabs-container {
