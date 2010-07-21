@@ -163,7 +163,6 @@ let verticalTabs = {
 
 			ib.collapsed = false;
 		});
-		// Possibly need _onDrop but I don't think so
 		tabbrowser._onDragEnd = (function(aEvent) {
 			// Note: while this case is correctly handled here, this event
 			// isn't dispatched when the tab is moved within the tabstrip,
@@ -222,13 +221,13 @@ let verticalTabs = {
 		let tabstack = document.getAnonymousNodes(tabcontainer)[0];
 		tabstack.orient = "horizontal";
 
-		/*let tabsbottom = tabstack.firstChild.lastChild;
+		let tabsbottom = tabstack.firstChild.lastChild;
 		dump(tabsbottom.tagName);
 		let tabssplitter = tabsbottom.ownerDocument.createElement("splitter");
 		tabssplitter.className = "tabs-bottom";
 		tabssplitter.collapse = "before";
 		tabssplitter.appendChild(document.createElement("grippy"));
-		tabstack.firstChild.replaceChild(tabsbottom, tabssplitter);*/
+		tabstack.firstChild.replaceChild(tabsbottom, tabssplitter);
 		
 		let tabscontainer = tabstack.firstChild.nextSibling;
 		tabscontainer.orient = "vertical";
@@ -239,8 +238,7 @@ let verticalTabs = {
 		let scrollbox = document.getAnonymousElementByAttribute(arrowscrollbox,"anonid","scrollbox");
 		scrollbox.orient = "vertical";
 
-		let tabs = tabbrowser.mTabs;
-		// Set on creation of tabs?
+		//let tabs = tabbrowser.mTabs;
 		
 		let tabpanels = tabbox.lastChild.tagName;
 		tabpanels.orient = "vertical";
