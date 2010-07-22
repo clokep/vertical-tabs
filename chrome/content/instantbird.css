@@ -17,7 +17,7 @@
  * 				stack									H	.tabs-stack						getBrowser().ownerDocument.getAnonymousNodes(getBrowser().mTabContainer)[0]
  * 					vbox								V	> vbox							getBrowser().ownerDocument.getAnonymousNodes(getBrowser().mTabContainer)[0].firstChild
  * 						spacer							V	> vbox > spacer					getBrowser().ownerDocument.getAnonymousNodes(getBrowser().mTabContainer)[0].firstChild.firstchild
- * 						hbox							H	> vbox > hbox					getBrowser().ownerDocument.getAnonymousNodes(getBrowser().mTabContainer)[0].firstChild.lastChild
+ * 						hbox							H	.tabs-bottom					getBrowser().ownerDocument.getAnonymousNodes(getBrowser().mTabContainer)[0].firstChild.lastChild
  * 					hbox								H	.tabs-container					getBrowser().ownerDocument.getAnonymousNodes(getBrowser().mTabContainer)[0].firstChild.nextSibling
  * 						arrowscrollbox					H	.tabbrowser-arrowscrollbox		getBrowser().mTabContainer.mTabstrip
  * 							scrollbox					H	> scrollbox						getBrowser().ownerDocument.getAnonymousElementByAttribute(arrowscrollbox,"anonid","scrollbox")
@@ -69,4 +69,15 @@
 #conversations .tabs-stack > vbox {
 	max-height: none;
 	-moz-box-orient: horizontal !important; /* Not set in JS */
+}
+#conversations .tabs-bottom {
+	border-right: 0px;
+	width: 0px;
+	padding-right: 3px;
+}
+#conversations .tabs-splitter {
+	border-left: 0px;
+}
+#conversations .tabs-stack {
+	width: 150px;
 }

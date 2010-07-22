@@ -221,14 +221,6 @@ let verticalTabs = {
 		let tabstack = document.getAnonymousNodes(tabcontainer)[0];
 		tabstack.orient = "horizontal";
 
-		let tabsbottom = tabstack.firstChild.lastChild;
-		dump(tabsbottom.tagName);
-		let tabssplitter = tabsbottom.ownerDocument.createElement("splitter");
-		tabssplitter.className = "tabs-bottom";
-		tabssplitter.collapse = "before";
-		tabssplitter.appendChild(document.createElement("grippy"));
-		tabstack.firstChild.replaceChild(tabsbottom, tabssplitter);
-		
 		let tabscontainer = tabstack.firstChild.nextSibling;
 		tabscontainer.orient = "vertical";
 
@@ -239,9 +231,19 @@ let verticalTabs = {
 		scrollbox.orient = "vertical";
 
 		//let tabs = tabbrowser.mTabs;
+
+		// Remove the current separator
+		//tabstack.removeChild(tabstack.firstChild);
 		
-		let tabpanels = tabbox.lastChild.tagName;
-		tabpanels.orient = "vertical";
+		// Add a splitter
+		let tabssplitter = document.createElement("splitter");
+		tabssplitter.className = "tabs-splitter";
+		tabssplitter.setAttribute("collapse", "before");
+		tabssplitter.appendChild(document.createElement("grippy"));
+		tabbox.insertBefore(tabssplitter, tabbox.lastChild);
+		
+		//let tabpanels = tabbox.lastChild;
+		//tabpanels.orient = "vertical";
 	}
 }
 

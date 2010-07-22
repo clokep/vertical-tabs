@@ -109,8 +109,8 @@
   /*height: 4px;*/ width: 4px;
   /*margin: 0px;
   background: -moz-dialog url("chrome://instantbird/skin/tabbrowser/tabstrip-bottom.png") repeat;*/
-  /*border-top: 1px solid threedshadow;*/ border-left: 1px solid threedshadow;
-  /*border-bottom: 1px solid threedshadow;*/ border-right: 1px solid threedshadow;
+  /*border-top: 1px solid threedshadow;*/ border-top: 0; border-left: 1px solid threedshadow;
+  /*border-bottom: 1px solid threedshadow;*/  border-bottom: 0; border-right: 1px solid threedshadow;
 }
 
 /*tabpanels {
