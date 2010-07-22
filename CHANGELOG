@@ -6,6 +6,9 @@ R - Removed
 F - Fixed
 K - Known issue
 
+0.4		2010/xx/xx	(Ib 0.2 - 0.3a1pre)
+
+
 0.3		2010/07/22	(Ib 0.2 - 0.3a1pre)
 F	2	Better Linux compatibility (scrollbuttons and max tab height)
 F	5	Resizable / hidden tabs

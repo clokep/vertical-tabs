@@ -41,7 +41,7 @@
 	<Description about="urn:mozilla:install-manifest">
 		<!-- Extension Information //-->
 		<em:id>vertical-tabs@patrick.cloke</em:id>
-		<em:version>0.3</em:version>
+		<em:version>0.4pre</em:version>
 		<em:type>2</em:type> <!-- Extension //-->
 
 		<!-- Front End MetaData //-->
