@@ -217,7 +217,7 @@ let verticalTabs = {
 		let tabcontainer = tabbrowser.mTabContainer;
 		tabcontainer.orient = "vertical";
 		//tabcontainer.align = "stretch"; // Set in CSS
-		
+
 		let tabstack = document.getAnonymousNodes(tabcontainer)[0];
 		tabstack.orient = "horizontal";
 
@@ -230,20 +230,12 @@ let verticalTabs = {
 		let scrollbox = document.getAnonymousElementByAttribute(arrowscrollbox,"anonid","scrollbox");
 		scrollbox.orient = "vertical";
 
-		//let tabs = tabbrowser.mTabs;
-
-		// Remove the current separator
-		//tabstack.removeChild(tabstack.firstChild);
-		
 		// Add a splitter
 		let tabssplitter = document.createElement("splitter");
 		tabssplitter.className = "tabs-splitter";
 		tabssplitter.setAttribute("collapse", "before");
 		tabssplitter.appendChild(document.createElement("grippy"));
 		tabbox.insertBefore(tabssplitter, tabbox.lastChild);
-		
-		//let tabpanels = tabbox.lastChild;
-		//tabpanels.orient = "vertical";
 	}
 }
 

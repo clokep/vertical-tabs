@@ -71,13 +71,14 @@
 	-moz-box-orient: horizontal !important; /* Not set in JS */
 }
 #conversations .tabs-bottom {
+	/* We're going to leave just the left border really */
 	border-right: 0px;
 	width: 0px;
-	padding-right: 3px;
 }
 #conversations .tabs-splitter {
 	border-left: 0px;
 }
 #conversations .tabs-stack {
+	/* "Default" width */
 	width: 150px;
 }
