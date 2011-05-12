@@ -37,7 +37,7 @@
 
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	 xmlns:em="http://www.mozilla.org/2004/em-rdf#">
-	
+
 	<Description about="urn:mozilla:install-manifest">
 		<!-- Extension Information //-->
 		<em:id>vertical-tabs@patrick.cloke</em:id>
@@ -60,8 +60,8 @@
 			<Description>
 				<!-- Instantbird //-->
 				<em:id>{33cb9019-c295-46dd-be21-8c4936574bee}</em:id>
-				<em:minVersion>0.2</em:minVersion>
-				<em:maxVersion>0.3a1pre</em:maxVersion>
+				<em:minVersion>0.3a3pre</em:minVersion>
+				<em:maxVersion>0.3a3pre</em:maxVersion>
 			</Description>
 		</em:targetApplication>
 	</Description>

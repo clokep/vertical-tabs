@@ -51,28 +51,23 @@
 /*
  * [Ib 0.2b2 - 0.3a1pre]:
  * Element													V/H	CSS Identifier				JavaScript Identifier
- * tabconversation											H	#conversations
- * 	tabbox												V	> tabbox						getBrowser().mTabbox
- * 		hbox											H	.tab-drop-indicator-bar			getBrowser().mTabDropIndicatorBar
- * 			hbox										H	.tab-drop-indicator
- * 		hbox											H	.tabbrowser-strip				getBrowser().mStrip
+ * tabconversation									H	#conversations
+ * 	tabbox				  								V	> tabbox						getBrowser().mTabbox
+ * 		hbox				    							H	.tab-drop-indicator-bar			getBrowser().mTabDropIndicatorBar
+ * 			hbox			    							H	.tab-drop-indicator
+ * 		hbox				    							H	.tabbrowser-strip				getBrowser().mStrip
  * 			tooltip
- * 			menupopup										#context_newTab
- * 			tabs										H	.tabbrowser-tabs				getBrowser().mTabContainer
- * 				stack									H	.tabs-stack						getBrowser().ownerDocument.getAnonymousNodes(getBrowser().mTabContainer)[0]
- * 					vbox								V	> vbox							getBrowser().ownerDocument.getAnonymousNodes(getBrowser().mTabContainer)[0].firstChild
- * 						spacer							V	> vbox > spacer					getBrowser().ownerDocument.getAnonymousNodes(getBrowser().mTabContainer)[0].firstChild.firstchild
- * 						hbox							H	.tabs-bottom					getBrowser().ownerDocument.getAnonymousNodes(getBrowser().mTabContainer)[0].firstChild.lastChild
- * 					hbox								H	.tabs-container					getBrowser().ownerDocument.getAnonymousNodes(getBrowser().mTabContainer)[0].firstChild.nextSibling
- * 						arrowscrollbox					H	.tabbrowser-arrowscrollbox		getBrowser().mTabContainer.mTabstrip
- * 							scrollbox					H	> scrollbox						getBrowser().ownerDocument.getAnonymousElementByAttribute(arrowscrollbox,"anonid","scrollbox")
- * 								box						H	> box
- * 									tab					H	.tabbrowser-tab
- * 										image				.tab-icon-image
- * 										label				.tab-text
- * 										toolbarbutton		.tab-close-button
- * 					stack								H	.tabs-alltabs-stack
- * 		tabpanels										H	> tabpanels						getBrowser().mTabbox.lastChild
+ * 			menupopup	  									#context_newTab
+ * 			tabs			    							H	.tabbrowser-tabs				getBrowser().mTabContainer
+ * 				hbox		    					  	H	.tabs-container					getBrowser().ownerDocument.getAnonymousNodes(getBrowser().mTabContainer)[0].firstChild.nextSibling
+ * 					arrowscrollbox					H	.tabbrowser-arrowscrollbox		getBrowser().mTabContainer.mTabstrip
+ * 						scrollbox					    H	> scrollbox						getBrowser().ownerDocument.getAnonymousElementByAttribute(arrowscrollbox,"anonid","scrollbox")
+ * 							box					      	H	> box
+ * 								tab					      H	.tabbrowser-tab
+ * 									image			      	.tab-icon-image
+ * 									label		      		.tab-text
+ * 									toolbarbutton	  	.tab-close-button
+ * 		tabpanels							  			H	> tabpanels						getBrowser().mTabbox.lastChild
  * 			conversation								H
  */
 
@@ -100,14 +95,13 @@
 #conversations .tab-drop-indicator-bar,
 #conversations .tabbrowser-strip,
 #conversations .tabbrowser-tabs,
-#conversations .tabs-stack,
 #conversations .tabs-container,
 #conversations .tabbrowser-arrowscrollbox,
 #conversations .tabbrowser-arrowscrollbox > scrollbox,
 #conversations .tabbrowser-arrowscrollbox > scrollbox > .scrollbox-innerbox,
 #conversations > tabbox > tabpanels {
 	-moz-box-orient: vertical !important;
-	max-height: none !important;	
+	max-height: none !important;
 }
 
 /* Bottom border */
@@ -116,14 +110,14 @@
 	-moz-box-orient: horizontal !important; /* Not set in JS */
 }
 #conversations .tabs-bottom {
-	/* We're going to leave just the left border really */
+	/* We're going to leave just the left border */
 	border-right: 0px;
 	width: 0px;
 }
 #conversations .tabs-splitter {
 	border-left: 0px;
 }
-#conversations .tabs-stack {
+#conversations .tabs-container {
 	/* "Default" width */
 	width: 120px;
 }
