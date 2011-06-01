@@ -59,7 +59,7 @@
  * 			tooltip
  * 			menupopup	  									#context_newTab
  * 			tabs			    							H	.tabbrowser-tabs				getBrowser().mTabContainer
- * 				hbox		    					  	H	.tabs-container					getBrowser().ownerDocument.getAnonymousNodes(getBrowser().mTabContainer)[0].firstChild.nextSibling
+ * 				hbox		    					  	H	.tabs-container					getBrowser().ownerDocument.getAnonymousNodes(getBrowser().mTabContainer)[0]
  * 					arrowscrollbox					H	.tabbrowser-arrowscrollbox		getBrowser().mTabContainer.mTabstrip
  * 						scrollbox					    H	> scrollbox						getBrowser().ownerDocument.getAnonymousElementByAttribute(arrowscrollbox,"anonid","scrollbox")
  * 							box					      	H	> box
@@ -105,7 +105,7 @@
 }
 
 /* Bottom border */
-#conversations .tabs-stack > vbox {
+#conversations > vbox {
 	max-height: none;
 	-moz-box-orient: horizontal !important; /* Not set in JS */
 }

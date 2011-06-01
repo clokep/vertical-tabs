@@ -33,7 +33,7 @@
  * the terms of any one of the MPL, the GPL or the LGPL.
  *
  * ***** END LICENSE BLOCK ***** */
- 
+
 function dump(aMessage) {
 	var consoleService = Components.classes["@mozilla.org/consoleservice;1"]
 									 .getService(Components.interfaces.nsIConsoleService);
@@ -205,29 +205,28 @@ let verticalTabs = {
 					return i;
 			return this.mTabs.length;
 		});
-		
+
 		let document = tabbrowser.ownerDocument;
-		
+
 		let tabbox = tabbrowser.mTabBox;
 		//tabbox.orient = "horizontal"; // Set in CSS
-		
+
 		let tabstrip = tabbrowser.mStrip;
 		tabstrip.orient = "vertical";
-		
+
 		let tabcontainer = tabbrowser.mTabContainer;
 		tabcontainer.orient = "vertical";
 		//tabcontainer.align = "stretch"; // Set in CSS
 
-		let tabstack = document.getAnonymousNodes(tabcontainer)[0];
-		tabstack.orient = "horizontal";
-
-		let tabscontainer = tabstack.firstChild.nextSibling;
-		tabscontainer.orient = "vertical";
+		let tabscontainer = document.getAnonymousNodes(tabcontainer)[0];
+		tabscontainer.orient = "horizontal";
 
 		let arrowscrollbox = tabcontainer.mTabstrip;
 		arrowscrollbox.orient = "vertical";
 
-		let scrollbox = document.getAnonymousElementByAttribute(arrowscrollbox,"anonid","scrollbox");
+		let scrollbox = document.getAnonymousElementByAttribute(arrowscrollbox,
+                                                            "anonid",
+                                                            "scrollbox");
 		scrollbox.orient = "vertical";
 
 		// Add a splitter
