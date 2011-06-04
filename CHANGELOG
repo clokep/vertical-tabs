@@ -6,9 +6,10 @@ R - Removed
 F - Fixed
 K - Known issue
 
-0.4		2011/xx/xx	(Ib 0.3a3pre - 0.3a3pre)
+0.4		2011/06/04	(Ib 0.3a3pre - 0.3b2pre)
 R   Dropped Ib 0.2 support to be compatible with the new tabs
 F   Support new Firefox 4.0 style tabs
+K   Selected tab does not "connect" properly to the conversation
 
 0.3		2010/07/22	(Ib 0.2 - 0.3a1pre)
 F	2	Better Linux compatibility (scrollbuttons and max tab height)
