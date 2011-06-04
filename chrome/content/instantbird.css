@@ -50,25 +50,50 @@
 
 /*
  * [Ib 0.3a3pre]:
- * Element													V/H	CSS Identifier				JavaScript Identifier
- * tabconversation									H	#conversations
- * 	tabbox				  								V	> tabbox						getBrowser().mTabBox
- * 		hbox				    							H	.tab-drop-indicator-bar			getBrowser().mTabDropIndicatorBar
- * 			hbox			    							H	.tab-drop-indicator
- * 		hbox				    							H	.tabbrowser-strip				getBrowser().mStrip
+ * Element														V/H	CSS Identifier						JavaScript Identifier
+ * tabconversation										H	#conversations
+ * 	tabbox														V	> tabbox										getBrowser().mTabBox
+ * 		hbox														H	.tab-drop-indicator-bar			getBrowser().mTabDropIndicatorBar
+ * 			hbox													H	.tab-drop-indicator
+ * 		hbox														H	.tabbrowser-strip						getBrowser().mStrip
  * 			tooltip
- * 			menupopup	  									#context_newTab
- * 			tabs			    							H	.tabbrowser-tabs				getBrowser().mTabContainer
- * 				hbox		    					  	H	.tabs-container					getBrowser().ownerDocument.getAnonymousNodes(getBrowser().mTabContainer)[0]
- * 					arrowscrollbox					H	.tabbrowser-arrowscrollbox		getBrowser().mTabContainer.mTabstrip
- * 						scrollbox					    H	> scrollbox						getBrowser().ownerDocument.getAnonymousElementByAttribute(arrowscrollbox,"anonid","scrollbox")
- * 							box					      	H	> box
- * 								tab					      H	.tabbrowser-tab
- * 									image			      	.tab-icon-image
- * 									label		      		.tab-text
- * 									toolbarbutton	  	.tab-close-button
- * 		tabpanels							  			H	> tabpanels						getBrowser().mTabbox.lastChild
- * 			conversation								H
+ * 			menupopup												#context_newTab
+ * 			tabs													H	.tabbrowser-tabs						getBrowser().mTabContainer
+ * 				hbox												H	.tabs-container							getBrowser().ownerDocument.getAnonymousNodes(getBrowser().mTabContainer)[0]
+ * 					arrowscrollbox						H	.tabbrowser-arrowscrollbox	getBrowser().mTabContainer.mTabstrip
+ *						toolbarbutton						 .scrollbutton-up
+ *							image									 .toolbarbutton-icon
+ *							label									 .toolbarbutton-text
+ * 						scrollbox								H	> scrollbox									getBrowser().ownerDocument.getAnonymousElementByAttribute(arrowscrollbox,"anonid","scrollbox")
+ * 							box									 	H	> box
+ * 								stack
+ * 									hbox
+ * 										hbox							.tab-background-start
+ * 										hbox							.tab-background-middle
+ * 										hbox							.tab-backgronud-end
+ * 									hbox
+ * 										tab							H	.tabbrowser-tab
+ * 											image					 	.tab-icon-image
+ * 											label						.tab-text
+ * 											toolbarbutton	 	.tab-close-button
+ * 												image					.toolbarbutton-icon
+ * 						toolbarbutton							.scrollbutton-down
+ *							image										.toolbarbutton-icon
+ *							label										.toolbarbutton-text
+ *					toolbarbutton							 .tabs-newtab-button
+ *						image										 .toolbarbutton-icon
+ *						label										 .toolbarbutton-text
+ *					toolbarbutton							 .tabs-alltabs-button
+ *						menupopup								 .tabs-alltabs-popup
+ *							arrowscrollbox					.popup-internal-box
+ *						image										 .toolbarbutton-icon
+ *						label										 .toolbarbutton-text
+ *						dropmarker								.toolbarbutton-menu-dropmarker
+ *							image									 .dropmarker-icon
+ *					toolbarbutton							 .close-button .tabs-closebutton
+ *						image										 .toolbarbutton-icon
+ * 		tabpanels												H	> tabpanels									 getBrowser().mTabbox.lastChild
+ * 			conversation									H
  */
 
 /*
