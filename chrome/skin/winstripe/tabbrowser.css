@@ -1,4 +1,4 @@
-﻿/* ***** BEGIN LICENSE BLOCK *****
+/* ***** BEGIN LICENSE BLOCK *****
  * Version: MPL 1.1/GPL 2.0/LGPL 2.1
  *
  * The contents of this file are subject to the Mozilla Public License Version
@@ -13,21 +13,11 @@
  *
  * The Original Code is mozilla.org code.
  *
- * The Initial Developer of the Original Code is
- * Netscape Communications Corporation.
- * Portions created by the Initial Developer are Copyright (C) 1998-1999
+ * The Initial Developer of the Original Code is Vertical Tabs.
+ * Portions created by the Initial Developer are Copyright (C) 2011
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
- *   Joe Hewitt (hewitt@netscape.com)
- *   Jason Kersey (kerz@netscape.com)
- *   Pierre Chanial (chanial@noos.fr)
- *   Dean Tessman (dean_tessman@hotmail.com)
- *   Blake Ross (blake@cs.stanford.edu)
- *   Pamela Greene (pamg.bugs@gmail.com)
- *   Dão Gottwald (dao@mozilla.com)
- *   Florian Quèze (florian@instantbird.org)
- *   Patrick Cloke (clokep@gmail.com)
  *
  * Alternatively, the contents of this file may be used under the terms of
  * either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -43,332 +33,34 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-/* Tabstrip */
-/*
-.tabbrowser-tabs {
-  -moz-appearance: -moz-win-browsertabbar-toolbox;
-  background: -moz-dialog url("chrome://instantbird/skin/tabbrowser/tabbrowser-tabs-bkgnd.png") repeat-x;
-}*/
+@import url("chrome://global/skin/");
 
-.tabs-container:not([overflow="true"]) {
-  /*padding: 0 3px;*/ padding: 3px 0;
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+/* Have the tabs overlap with the splitter */
+#conversations .tabs-splitter {
+  margin-left: -3px;
 }
 
-/* Tabs */
-.tabbrowser-tab {
-  /*-moz-appearance: none;
-  background: url("chrome://instantbird/skin/tabbrowser/tab-bkgnd.png") repeat-x;*/
-  /*height: 22px;*/ max-height: 22px;
-  /*margin: 3px 0px 4px;*/ /*margin: 0px 4px 0px 3px;*/ margin: 0px 2px 0px 3px; /* Fix border size changing so it doesn't shift everything 2px */
-  /*padding: 0px 1px 1px 0px;*/ padding: 1px 0px 0px 1px;
-  /*border: 2px solid;*/
-  /*border-right-width: 1px;*/ border-right: none;
-  /*border-bottom: none;*/ border-bottom: 1px solid;
-  -moz-border-radius-topleft: 2px;
-  /*-moz-border-radius-topright: 2px;*/ -moz-border-radius-topright: 0px; -moz-border-radius-bottomleft: 2px;
-  /*-moz-border-top-colors: ThreeDShadow rgba(255,255,255,.3);*/
-  /*-moz-border-right-colors: rgba(0,0,0,.1); */ -moz-border-bottom-colors: rgba(0,0,0,.1);
-  /*-moz-border-left-colors: ThreeDShadow rgba(255,255,255,.3);*/
+.tabbrowser-tab,
+.tabs-newtab-button {
+  /*background: -moz-linear-gradient(bottom, rgba(10%,10%,10%,.4) 1px, transparent 1px), -moz-linear-gradient(transparent, hsla(0,0%,45%,.1) 1px, hsla(0,0%,32%,.2) 80%, hsla(0,0%,0%,.2)),
+              -moz-linear-gradient(-moz-dialog, -moz-dialog);*/
+  /*background-origin: border-box;
+  background-position: 1px 2px;
+  background-size: -moz-calc(100% - 2px) -moz-calc(100% - 2px);
+  background-repeat: no-repeat;*/
+  -moz-border-image: url(tab.png) 3 6 3 4 / 3px 6px 3px 4px repeat stretch;
+  border-radius: 7px 0 0 7px;
 }
-
-.tabbrowser-tab:hover,
-.tabbrowser-tab[selected="true"] {
-  /*border-width: 1px;*/
-  /*height: 23px;*/ max-height: 22px;
-  -moz-border-radius-topleft: 4px;
-  /*-moz-border-radius-topright: 4px;*/ -moz-border-radius-topright: 0px; -moz-border-radius-bottomleft: 4px;
-  /*-moz-border-top-colors: ThreeDShadow;*/ -moz-border-left-colors: ThreeDShadow;
-  /*-moz-border-right-colors: ThreeDShadow;*/ -moz-border-top-colors: ThreeDShadow;
-  /*-moz-border-left-colors: ThreeDShadow;*/ -moz-border-bottom-colors: ThreeDShadow;
-}
-
-.tabbrowser-tab:not([selected="true"]):hover {
-  /*margin: 2px 0px 4px;*/ /*margin: 0px 4px 0px 2px;*/ margin: 0px 0px 0px 2px;
-  /*padding: 2px 1px 1px;*/ padding: 1px 1px 1px 2px;
-  /*background-image: url("chrome://instantbird/skin/tabbrowser/tab-hover-bkgnd.png");*/
-}
-
-.tabbrowser-tab[selected="true"] {
-  /*margin: 2px 0px 3px;*/ /*margin: 0px 3px 0px 2px; */ margin: 0px 0px 0px 2px;
-  /*padding: 1px;
-  background-image: url("chrome://instantbird/skin/tabbrowser/tab-active-bkgnd.png");
-  background-color: -moz-dialog;
-  font-weight: bold;*/
-}
-
-/*.tab-icon-image {
-  margin-top: 1px;
-  -moz-margin-start: 7px;
-  -moz-margin-end: 3px;
-  width: 16px;
-  height: 16px;
-  -moz-image-region: rect(0px, 16px, 16px, 0px);
-}*/
-
-.tabs-bottom {
-  /*height: 4px;*/ width: 4px;
-  /*margin: 0px;
-  background: -moz-dialog url("chrome://instantbird/skin/tabbrowser/tabstrip-bottom.png") repeat;*/
-  /*border-top: 1px solid threedshadow;*/ border-top: 0; border-left: 1px solid threedshadow;
-  /*border-bottom: 1px solid threedshadow;*/  border-bottom: 0; border-right: 1px solid threedshadow;
-}
-
-/*tabpanels {
-  -moz-appearance: none;
-}*/
-
-/* tabbrowser-tab focus ring */
-/*.tab-text {
-  border: 1px dotted transparent;
-}*/
-
-/*.tabbrowser-tab[selected="true"]:focus > .tab-text {
-  border: 1px dotted -moz-DialogText;
-}*/
 
 /* Tab DnD indicator */
 .tab-drop-indicator-bar {
-  /*height: 11px;*/ max-height: none; /*width: 11px;*/ width: 15px;
-  /*margin-top: -11px;*/ margin-top: 0px; /*margin-left: -11px;*/ margin-left: -7px;
-  /*position: relative;*/
-  /* set -moz-margin-start to -1/2 indicator width: */
-  /*-moz-margin-start: -5px;*/ margin-top: -5px;
-  /*-moz-margin-end: -8px;*/ margin-bottom: -8px;
+  margin-top: -8px;
+  margin-left: -3px;
 }
 
 .tab-drop-indicator {
-  /*margin-top: 11px;*/ margin-top: 0px; /*margin-left: 11px;*/ margin-left: 0px;
-  /*height: 11px;
-  width: 11px;*/
-  /*margin-bottom: -11px;*/ margin-bottom: 0px; margin-right: -11px;
-  /*position: relative;
-  background: url('chrome://instantbird/skin/tabbrowser/tabDragIndicator.png') 50% 50% no-repeat;*/
   -moz-transform: rotate(-90deg);
-}
-
-/* Tab close button */
-/*.tab-close-button > .toolbarbutton-icon {
-  -moz-margin-end: 0px !important;
-  margin-top: 1px;
-}*/
-
-/*.tab-close-button {
-  -moz-appearance: none;
-  -moz-image-region: rect(0px, 56px, 14px, 42px);
-  -moz-margin-end: 6px;
-  border: none;
-  padding: 0px;
-  list-style-image: url("chrome://global/skin/icons/close.png");
-}*/
-
-/*.tab-close-button:hover,
-.tabbrowser-tab[selected="true"] > .tab-close-button:hover {
-  -moz-image-region: rect(0px, 28px, 14px, 14px);
-}*/
-
-/*.tab-close-button:hover:active,
-.tabbrowser-tab[selected="true"] > .tab-close-button:hover:active {
-  -moz-image-region: rect(0px, 42px, 14px, 28px);
-}*/
-
-/*.tabbrowser-tab[selected="true"] > .tab-close-button {
-  -moz-image-region: rect(0px, 14px, 14px, 0px);*/
-  /* Make this button focusable so clicking on it will not focus the tab while
-     it's getting closed */
-  /*-moz-user-focus: normal;
-}*/
-
-/*.tab-close-button:focus {
-  outline: none !important;
-}*/
-
-/* Tab scrollbox arrow, tabstrip new tab and all-tabs buttons */
-.tabbrowser-arrowscrollbox > .scrollbutton-up,
-.tabbrowser-arrowscrollbox > .scrollbutton-down,
-.tabs-newtab-button,
-.tabs-alltabs-button {
-  /*-moz-appearance: none;*/
-  /*width: 18px;*/ height: 18px;
-  /*margin: 3px 0px 4px;*/ margin: 0px 4px 0px 3px;
-  /*padding: 0px;*/
-  border: 2px solid;
-  /*border-right-width: 1px;*/ border-top-width: 1px;
-  /*border-bottom: none;*/ border-right: none;
-  /*-moz-border-top-colors: ThreeDShadow rgba(255,255,255,.3);*/ -moz-border-left-colors: ThreeDShadow rgba(255,255,255,.3);
-  /*-moz-border-right-colors: ThreeDShadow;*/ -moz-border-top-colors: ThreeDShadow;
-  /*-moz-border-left-colors: ThreeDShadow rgba(255,255,255,.3);*/ -moz-border-bottom-colors: ThreeDShadow rgba(255,255,255,.3);
-  /*background: url("chrome://instantbird/skin/tabbrowser/tab-bkgnd.png") repeat-x;
-  -moz-image-region: rect(0, 11px, 14px, 0);*/
-}
-
-.tabbrowser-arrowscrollbox > .scrollbutton-up:not([disabled="true"]):hover,
-.tabbrowser-arrowscrollbox > .scrollbutton-down:not([disabled="true"]):hover,
-.tabs-newtab-button:hover,
-.tabs-alltabs-button:hover {
-  /*border-top-width: 1px;*/ border-left-width: 1px; /* CHECKME */
-  /*padding-top: 1px;*/ padding-top: 0px; padding-left: 1px;
-  /*-moz-border-top-colors: ThreeDShadow;*/ -moz-border-left-colors: ThreeDShadow;
-  /*-moz-border-right-colors: ThreeDShadow;*/ -moz-border-top-colors: ThreeDShadow;
-  /*-moz-border-left-colors: ThreeDShadow transparent;*/ -moz-border-bottom-colors: ThreeDShadow transparent;
-  /*background-image: url("chrome://instantbird/skin/tabbrowser/tab-hover-bkgnd.png");*/
-}
-
-/*.tabbrowser-arrowscrollbox > .scrollbutton-up,
-.tabbrowser-arrowscrollbox > .scrollbutton-down {
-  -moz-image-region: rect(0, 15px, 17px, 0);
-}*/
-
-/*.tabbrowser-arrowscrollbox > .scrollbutton-up:not([disabled="true"]):hover,
-.tabbrowser-arrowscrollbox > .scrollbutton-down:not([disabled="true"]):hover {
-  -moz-image-region: rect(0, 30px, 17px, 15px);
-}*/
-
-/*.tabbrowser-arrowscrollbox > .scrollbutton-up[disabled="true"],
-.tabbrowser-arrowscrollbox > .scrollbutton-down[disabled="true"] {
-  opacity: .4;
-}*/
-
-/*.tabbrowser-arrowscrollbox > .scrollbutton-up:not([disabled="true"]):hover:active,
-.tabbrowser-arrowscrollbox > .scrollbutton-down:not([disabled="true"]):hover:active {
-  -moz-image-region: rect(0, 45px, 17px, 30px);
-}*/
-
-.tabbrowser-arrowscrollbox > .scrollbutton-up {
-  /*border-left-style: none;*/ border-left: 2px solid; border-top-style: none;
-  /*list-style-image: url("chrome://instantbird/skin/tabbrowser/tab-arrow-left.png");*/
-  /*-moz-border-radius-topright: 2px;*/ -moz-border-radius-topleft: 2px;
-}
-
-.tabbrowser-arrowscrollbox > .scrollbutton-up[chromedir="rtl"] { /* Rotate CW since rtl */
-  /*border-left-style: solid;*/ border-bottom-style: solid;
-  /*border-right-style: none;*/ border-top-style: none;
-  /*-moz-border-radius-topleft: 2px;*/ -moz-border-radius-topright: 2px;
-  /*-moz-border-radius-topright: 0px;*/ -moz-border-radius-bottomright: 0px;
-  /*list-style-image: url("chrome://instantbird/skin/tabbrowser/tab-arrow-right.png");*/
-}
-
-.tabbrowser-arrowscrollbox > .scrollbutton-down,
-.tabs-container > .tabs-newtab-button,
-.tabs-alltabs-button {
-  /*border-right-style: none;*/ border-right: 2px solid; border-bottom-style: none;
-  /*-moz-border-radius-topleft: 2px;*/ -moz-border-radius-bottomleft: 2px;
-}
-
-/*.tabbrowser-arrowscrollbox > .scrollbutton-down {
-  list-style-image: url("chrome://instantbird/skin/tabbrowser/tab-arrow-right.png");
-}*/
-
-.tabbrowser-arrowscrollbox > .scrollbutton-down[chromedir="rtl"],
-.tabs-container > .tabs-newtab-button[chromedir="rtl"],
-.tabs-container > stack[chromedir="rtl"] > .tabs-alltabs-button { /* Rotate CW since rtl */
-  /*border-left-style: none;*/ border-top-style: none;
-  /*border-right-style: solid;*/ border-bottom-style: solid;
-  /*-moz-border-radius-topleft: 0px;*/ -moz-border-radius-topright: 0px;
-  /*-moz-border-radius-topright: 2px;*/ -moz-border-radius-bottomright: 2px;
-}
-
-/*.tabbrowser-arrowscrollbox > .scrollbutton-down[chromedir="rtl"] {
-  list-style-image: url("chrome://instantbird/skin/tabbrowser/tab-arrow-left.png");
-}*/
-
-/*.tabs-newtab-button {
-  list-style-image: url(chrome://instantbird/skin/tabbrowser/newtab.png);
-  -moz-image-region: rect(0, 18px, 18px, 0);
-}*/
-
-/*.tabs-newtab-button:hover:active {
-  -moz-image-region: rect(0, 36px, 18px, 18px);
-}*/
-
-.tabbrowser-arrowscrollbox > .tabs-newtab-button {
-  /*width: 31px;*/ height: 31px;
-  /*-moz-border-radius-topright: 2px;*/ -moz-border-radius-topleft: 2px;
-  /*-moz-border-radius-topleft: 2px;*/ -moz-border-radius-bottomleft: 2px;
-}
-
-/*.tabs-alltabs-button > .toolbarbutton-menu-dropmarker,
-.tabs-alltabs-button > .toolbarbutton-text  {
-  display: none;
-}*/
-
-.tabs-alltabs-button {
-  /*width: 17px;*/ height: 17px;
-}
-
-/*.tabs-alltabs-button > .toolbarbutton-icon {
-  list-style-image: url("chrome://instantbird/skin/tabbrowser/mainwindow-dropdown-arrow.png");
-  margin: 5px 0 4px;
-  -moz-image-region: rect(0, 13px, 11px, 0);
-}*/
-
-/*.tabs-alltabs-button[open="true"] > .toolbarbutton-icon {
-  -moz-image-region: rect(0, 26px, 11px, 13px);
-}*/
-
-.tabs-alltabs-box-animate {
-  /*margin-top: 2px;*/ margin-left: 2px;
-  /*margin-bottom: 4px;*/ margin-right: 4px;
-  /*width: 17px !important;*/ height: 17px !important;
-  /*background-image: url("chrome://instantbird/skin/tabbrowser/alltabs-box-overflow-end-bkgnd-animate.png");
-  background-repeat: no-repeat;
-  opacity: 0.0;*/
-}
-
-/*stack[chromedir="rtl"] > hbox > .tabs-alltabs-box-animate {
-  background-image: url("chrome://instantbird/skin/tabbrowser/alltabs-box-overflow-start-bkgnd-animate.png");
-}*/
-
-/* All tabs menupopup */
-/*.alltabs-item > .menu-iconic-left > .menu-iconic-icon {
-  -moz-image-region: rect(0px, 16px, 16px, 0px);
-}*/
-
-/*.alltabs-item[selected="true"] {
-  font-weight: bold;
-}*/
-
-/* Tabstrip close button */
-.tabs-closebutton {
-  /*-moz-appearance: none;
-  list-style-image: url("chrome://global/skin/icons/close.png");
-  -moz-image-region: rect(0px, 14px, 14px, 0px);*/
-  /*padding: 4px 2px;*/ padding: 2px 4px;
-  /*margin: 0px;
-  border: none;*/
-}
-
-/*.tabs-closebutton > .toolbarbutton-icon {
-  -moz-margin-end: 0px !important;
-  -moz-padding-end: 2px !important;
-  -moz-padding-start: 2px !important;
-}*/
-
-/*.tabs-closebutton:hover {
-  -moz-image-region: rect(0px, 28px, 14px, 14px);
-}*/
-
-/*.tabs-closebutton:hover:active {
-  -moz-image-region: rect(0px, 42px, 14px, 28px);
-}*/
-
-.tabs-container > .tabs-closebutton {
-  /*margin: 3px 0px 3px;*/ margin: 0px 3px 0px 3px;
-  /*padding: 4px 2px 2px;*/ padding: 2px 2px 2px 4px;
-  /*background: -moz-dialog url("chrome://instantbird/skin/tabbrowser/tab-active-bkgnd.png") repeat-x;*/
-  /*border-left: 1px solid threedshadow;*/ border-bottom: 1px solid threedshadow;
-  /*border-top: 1px solid threedshadow;*/ border-left: 1px solid threedshadow;
-  /*-moz-border-radius-topleft: 2px;*/ -moz-border-radius-bottomleft: 2px;
-}
-
-.tabs-container > .tabs-closebutton[chromedir="rtl"] {
-  /*border-left: none;*/ border-bottom: none;
-  /*border-right: 1px solid threedshadow;*/ border-top: 1px solid threedshadow;
-  /*-moz-border-radius-topleft: 0px;*/ -moz-border-radius-bottomleft: 0px;
-  /*-moz-border-radius-topright: 2px;*/ -moz-border-radius-topleft: 2px;
-}
-
-/* Tab scroll buttons */
-.tabbrowser-arrowscrollbox > .scrollbutton-up > .toolbarbutton-icon,
-.tabbrowser-arrowscrollbox > .scrollbutton-down > .toolbarbutton-icon {
-  -moz-transform: rotate(90deg);
 }

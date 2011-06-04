@@ -49,10 +49,10 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* set default namespace to XUL */
 
 /*
- * [Ib 0.2b2 - 0.3a1pre]:
+ * [Ib 0.3a3pre]:
  * Element													V/H	CSS Identifier				JavaScript Identifier
  * tabconversation									H	#conversations
- * 	tabbox				  								V	> tabbox						getBrowser().mTabbox
+ * 	tabbox				  								V	> tabbox						getBrowser().mTabBox
  * 		hbox				    							H	.tab-drop-indicator-bar			getBrowser().mTabDropIndicatorBar
  * 			hbox			    							H	.tab-drop-indicator
  * 		hbox				    							H	.tabbrowser-strip				getBrowser().mStrip
@@ -94,11 +94,9 @@
 #conversations,
 #conversations .tab-drop-indicator-bar,
 #conversations .tabbrowser-strip,
-#conversations .tabbrowser-tabs,
 #conversations .tabs-container,
 #conversations .tabbrowser-arrowscrollbox,
 #conversations .tabbrowser-arrowscrollbox > scrollbox,
-#conversations .tabbrowser-arrowscrollbox > scrollbox > .scrollbox-innerbox,
 #conversations > tabbox > tabpanels {
 	-moz-box-orient: vertical !important;
 	max-height: none !important;
@@ -109,15 +107,17 @@
 	max-height: none;
 	-moz-box-orient: horizontal !important; /* Not set in JS */
 }
-#conversations .tabs-bottom {
+/*#conversations .tabs-bottom {
 	/* We're going to leave just the left border */
-	border-right: 0px;
+	/*border-right: 0px;
 	width: 0px;
-}
+}*/
 #conversations .tabs-splitter {
-	border-left: 0px;
+	/*border-left: 0px;*/
 }
 #conversations .tabs-container {
 	/* "Default" width */
 	width: 120px;
+  /*border-right: 2px;
+  border-right-style: solid;*/
 }

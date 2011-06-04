@@ -214,6 +214,9 @@ let verticalTabs = {
 		let tabstrip = tabbrowser.mStrip;
 		tabstrip.orient = "vertical";
 
+    // Swap the tab container and the tab drop indicator bar
+    tabbox.insertBefore(tabstrip, tabbrowser.mTabDropIndicatorBar);
+
 		let tabcontainer = tabbrowser.mTabContainer;
 		tabcontainer.orient = "vertical";
 		//tabcontainer.align = "stretch"; // Set in CSS
@@ -228,6 +231,11 @@ let verticalTabs = {
                                                             "anonid",
                                                             "scrollbox");
 		scrollbox.orient = "vertical";
+
+    // Add a buffer to collapse the tab heights
+    let tabspacer = document.createElement("spacer");
+    tabspacer.setAttribute("flex", "100000");
+    scrollbox.appendChild(tabspacer);
 
 		// Add a splitter
 		let tabssplitter = document.createElement("splitter");

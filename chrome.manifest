@@ -3,4 +3,9 @@ overlay		chrome://instantbird/content/instantbird.xul	chrome://vertical-tabs/con
 skin		vertical-tabs		classic/1.0					chrome/skin/gnomestripe/ os=Linux
 skin		vertical-tabs		classic/1.0					chrome/skin/pinstripe/ os=Darwin
 skin		vertical-tabs		classic/1.0					chrome/skin/winstripe/ os=WinNT
+
+# Need different instantbird.css for aero!
 style		chrome://instantbird/content/instantbird.xul	chrome://vertical-tabs/content/instantbird.css
+
+# Why does this not work?
+#style   chrome://instantbird/content/instantbird.xul  chrome://vertical-tabs/content/tabbrowser.css
