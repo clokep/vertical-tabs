@@ -61,18 +61,18 @@
  * 			tabs													H	.tabbrowser-tabs						getBrowser().mTabContainer
  * 				hbox												H	.tabs-container							getBrowser().ownerDocument.getAnonymousNodes(getBrowser().mTabContainer)[0]
  * 					arrowscrollbox						H	.tabbrowser-arrowscrollbox	getBrowser().mTabContainer.mTabstrip
- *						toolbarbutton						 .scrollbutton-up
- *							image									 .toolbarbutton-icon
- *							label									 .toolbarbutton-text
+ *						toolbarbutton							.scrollbutton-up
+ *							image										.toolbarbutton-icon
+ *							label										.toolbarbutton-text
  * 						scrollbox								H	> scrollbox									getBrowser().ownerDocument.getAnonymousElementByAttribute(arrowscrollbox,"anonid","scrollbox")
  * 							box									 	H	> box
- * 								stack
- * 									hbox
- * 										hbox							.tab-background-start
- * 										hbox							.tab-background-middle
- * 										hbox							.tab-backgronud-end
- * 									hbox
- * 										tab							H	.tabbrowser-tab
+ * 								tab									H	.tabbrowser-tab
+ * 									stack							 .tab-stack
+ * 										hbox							.tab-background
+ * 											hbox						.tab-background-start
+ * 											hbox						.tab-background-middle
+ * 											hbox						.tab-backgronud-end
+ * 										hbox							.tab-content
  * 											image					 	.tab-icon-image
  * 											label						.tab-text
  * 											toolbarbutton	 	.tab-close-button
@@ -80,18 +80,18 @@
  * 						toolbarbutton							.scrollbutton-down
  *							image										.toolbarbutton-icon
  *							label										.toolbarbutton-text
- *					toolbarbutton							 .tabs-newtab-button
- *						image										 .toolbarbutton-icon
- *						label										 .toolbarbutton-text
- *					toolbarbutton							 .tabs-alltabs-button
- *						menupopup								 .tabs-alltabs-popup
+ *					toolbarbutton								.tabs-newtab-button
+ *						image											.toolbarbutton-icon
+ *						label											.toolbarbutton-text
+ *					toolbarbutton								.tabs-alltabs-button
+ *						menupopup									.tabs-alltabs-popup
  *							arrowscrollbox					.popup-internal-box
- *						image										 .toolbarbutton-icon
- *						label										 .toolbarbutton-text
+ *						image											.toolbarbutton-icon
+ *						label											.toolbarbutton-text
  *						dropmarker								.toolbarbutton-menu-dropmarker
- *							image									 .dropmarker-icon
- *					toolbarbutton							 .close-button .tabs-closebutton
- *						image										 .toolbarbutton-icon
+ *							image										.dropmarker-icon
+ *					toolbarbutton								.close-button .tabs-closebutton
+ *						image											.toolbarbutton-icon
  * 		tabpanels												H	> tabpanels									 getBrowser().mTabbox.lastChild
  * 			conversation									H
  */
@@ -111,6 +111,10 @@
 /*#conversations > tabbox {
 	-moz-box-direction: reverse !important;
 }*/
+
+#conversations {
+  padding-top: 0;
+}
 
 #conversations > tabbox {
 	-moz-box-orient: horizontal !important; /* Not set in JS */

@@ -241,8 +241,9 @@ let verticalTabs = {
 		let tabssplitter = document.createElement("splitter");
 		tabssplitter.className = "tabs-splitter";
 		tabssplitter.setAttribute("collapse", "before");
+    tabssplitter.setAttribute("resizebefore", "closest");
 		tabssplitter.appendChild(document.createElement("grippy"));
-		tabbox.insertBefore(tabssplitter, tabbox.lastChild);
+		tabbox.insertBefore(tabssplitter, tabbrowser.mTabDropIndicatorBar);
 	}
 }
 

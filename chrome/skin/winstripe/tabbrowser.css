@@ -40,8 +40,9 @@
 
 /* Have the tabs overlap with the splitter */
 #conversations .tabs-splitter {
-  margin-left: -3px;
-  border-left: 0;
+  margin-left: -7px;
+  /*margin-left: -8px;*/
+  /*border-left: 0;*/
 }
 
 .tabs-container > toolbarbutton,
@@ -54,31 +55,36 @@
 /* Aero-only? */
 @media all and (-moz-windows-default-theme) {
   .tabbrowser-strip {
-    padding: 2px 0;
+    padding: 2px 0 2px 2px;
   }
 }
 
 .tabbrowser-tab,
 .tabs-newtab-button {
-  /*background: -moz-linear-gradient(right, rgba(10%,10%,10%,.4) 1px, transparent 1px),
+  background: -moz-linear-gradient(right, rgba(10%,10%,10%,.4) 1px, transparent 1px),
               -moz-linear-gradient(left, transparent, hsla(0,0%,45%,.1) 1px, hsla(0,0%,32%,.2) 80%, hsla(0,0%,0%,.2)),
               -moz-linear-gradient(left, -moz-dialog, -moz-dialog);
-  /*background-position: -moz-calc(100% - 2px) -moz-cal(100% - 1px);*/
-  -moz-border-image: url(tab.png) 3 6 3 4 / 3px 6px 3px 4px repeat stretch;
+  -moz-border-image: url(tab.png) 3 6 3 4 / 3px 6px 3px 1px repeat stretch;
   border-radius: 7px 0 0 7px;
 }
 
 .tabbrowser-tab:hover,
 .tabs-newtab-button:hover {
-  background-image: rgba(10%,10%,10%,.4),
-                    -moz-linear-gradient(left, hsla(0,0%,100%,.3) 1px, hsla(0,0%,75%,.2) 80%, hsla(0,0%,60%,.2)),
+  background-image: -moz-linear-gradient(right, rgba(10%,10%,10%,.4) 1px, transparent 1px),
+                    -moz-linear-gradient(left, hsla(51,34%,100%,.9), hsla(51,15%,94%,.9) 1px, hsla(51,9%,83%,.9));
+}
+
+.tabbrowser-tab[selected="true"] {
+  background-image: -moz-linear-gradient(left, rgba(255,255,255,.7), rgba(255,255,255,.5) 50%),
                     -moz-linear-gradient(left, -moz-dialog, -moz-dialog);
 }
 
 /* Tab Drag 'n' Drop indicator */
 .tab-drop-indicator-bar {
-  margin-top: -8px;
-  margin-left: -3px;
+  margin-top: -7px;
+  margin-left: -7px;
+  margin-right: -4px;
+  margin-bottom: 0;
 }
 .tab-drop-indicator {
   -moz-transform: rotate(-90deg);
