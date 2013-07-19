@@ -6,7 +6,7 @@ R - Removed
 F - Fixed
 K - Known issue
 
-0.5		2013/xx/xx	(Ib 1.5a1pre - 1.5)
+0.5		2013/07/19	(Ib 1.5a1pre - 1.5)
 R   Dropped Ib < 1.5 support to be compatible with the new tabs
 F   Support for Ib 1.5
 F   Updated License to MPL 2
